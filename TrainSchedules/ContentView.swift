@@ -107,7 +107,8 @@ extension ContentView {
         Task {
             do {
                 let stations = try await service.getStationsList()
-                print(stations)
+              
+                print("All stations: \(stations)")
             } catch {
                 print("Error fetching stations: \(error)")
             }

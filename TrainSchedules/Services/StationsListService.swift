@@ -20,12 +20,19 @@ final class StationsListService: StationsListProtocol {
     }
     
     func getStationsList() async throws -> StationsList {
-        
-        let response = try await client.getStationsList(
-            query: .init(
-                apikey: apikey
-            ))
-        return try response.ok.body.json
+        let response = try await client.getStationsList(query: .init(apikey: apikey))
+        let httpBody = try response.ok.body.html
+                let data = try await Data(collecting: httpBody, upTo: 100 * 1024 * 1024)
+                let stationList = try JSONDecoder().decode(StationsList.self, from: data)
+//                 решение покрасивее
+//                  let stationList = try await JSONDecoder().decode(from: httpBody, to: StationsList.self)
+                return stationList
     }
 }
 
+extension  JSONDecoder {
+    func decode<T: Decodable>(from httpBody: HTTPBody, to type: T.Type, upTo maxBytes: Int = 100 * 1024 * 1024) async throws -> T {
+        let data = try await Data(collecting: httpBody, upTo: maxBytes)
+        return try self.decode(T.self, from: data)
+    }
+}

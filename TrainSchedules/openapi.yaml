@@ -444,15 +444,19 @@ paths:
         required: false
         schema:
           type: string
+          enum:
+            - xml
+            - json
+          default: json
 
       responses:
         "200":
           description: success
           content:
-            application/json:
+            text/html:
               schema:
                 $ref: '#/components/schemas/StationsList'
-  
+       
   /v3.0/copyright/:
     get:
       tags:
@@ -566,8 +570,13 @@ components:
         codes:
           $ref: '#/components/schemas/StationCodes'
         stations:
-          type: object
-          properties:
+          type: array
+          items:
+              $ref: '#/components/schemas/StationDetail'
+          
+    StationDetail:
+      type: object
+      properties:
             direction:
               type: string
             codes:
@@ -577,11 +586,17 @@ components:
             title:
               type: string
             longitude:
-              type: number
+              oneOf:
+              - type: number
+              - type: string
+              nullable: true
             transport_type:
               type: string
             latitude:
-              type: number
+              oneOf:
+              - type: number
+              - type: string
+              nullable: true
       
     InfoAboutCarrier:
       type: object
@@ -1238,4 +1253,5 @@ components:
         
         
         
+
 
