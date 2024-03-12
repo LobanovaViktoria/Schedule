@@ -13,11 +13,9 @@ protocol SingleThreadServiceProtocol {
 final class SingleThreadService: SingleThreadServiceProtocol {
     
     private let client: Client
-    private let apikey: String
     
-    init(client: Client, apikey: String) {
+    init(client: Client) {
         self.client = client
-        self.apikey = apikey
     }
     
     func getThread(
@@ -25,10 +23,7 @@ final class SingleThreadService: SingleThreadServiceProtocol {
     ) async throws -> SingleThread {
         
         let response = try await client.getThread(
-            query: .init(
-                apikey: apikey,
-                uid: uid
-            )
+            query: .init(uid: uid)
         )
         return try response.ok.body.json
     }

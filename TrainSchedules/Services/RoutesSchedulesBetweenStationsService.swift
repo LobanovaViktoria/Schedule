@@ -7,22 +7,20 @@ typealias Routes = Components.Schemas.Routes
 protocol RoutesSchedulesBetweenStationsServiceProtocol {
     
     func getRoutesSchedulesBetweenStations(
-    from: String,
-    to: String,
-    date: String,
-    limit: Int
-  ) async throws -> Routes
+        from: String,
+        to: String,
+        date: String,
+        limit: Int
+    ) async throws -> Routes
 }
 
 final class RoutesSchedulesBetweenStationsService: 
     RoutesSchedulesBetweenStationsServiceProtocol {
     
     private let client: Client
-    private let apikey: String
-    
-    init(client: Client, apikey: String) {
-      self.client = client
-      self.apikey = apikey
+   
+    init(client: Client) {
+        self.client = client
     }
     
     func getRoutesSchedulesBetweenStations(
@@ -32,13 +30,12 @@ final class RoutesSchedulesBetweenStationsService:
         limit: Int) async throws -> Routes {
             let response = try await client.getRoutesSchedulesBetweenStations(
                 query: .init(
-                    apikey: apikey,
                     from: from,
                     to: to,
                     date: date,
                     limit: limit
                 )
             )
-        return try response.ok.body.json
-    }
+            return try response.ok.body.json
+        }
 }

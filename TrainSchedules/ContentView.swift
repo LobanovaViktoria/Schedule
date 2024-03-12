@@ -10,14 +10,8 @@ import OpenAPIRuntime
 import OpenAPIURLSession
 
 struct ContentView: View {
-    let client: Client
-    let apiKey = "e7010142-c5c6-4200-b85c-deb1ffb7dedb"
     
-    init() {
-        self.client = Client(
-            serverURL: try! Servers.server1(),
-            transport: URLSessionTransport())
-    }
+    private let apiKey = "e7010142-c5c6-4200-b85c-deb1ffb7dedb"
     
     var body: some View {
         
@@ -75,12 +69,14 @@ extension ContentView {
     private func getCopyright() {
         let client = Client(
             serverURL: try! Servers.server1(),
-            transport: URLSessionTransport()
+            transport: URLSessionTransport(),
+            middlewares: [
+            AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+            ]
         )
         
         let service = CopyrightService(
-            client: client,
-            apikey: self.apiKey
+            client: client
         )
         
         Task {
@@ -96,18 +92,19 @@ extension ContentView {
     private func getStationList() {
         let client = Client(
             serverURL: try! Servers.server1(),
-            transport: URLSessionTransport()
+            transport: URLSessionTransport(),
+            middlewares: [
+            AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+            ]
         )
         
         let service = StationsListService(
-            client: client,
-            apikey: self.apiKey
+            client: client
         )
         
         Task {
             do {
                 let stations = try await service.getStationsList()
-              
                 print("All stations: \(stations)")
             } catch {
                 print("Error fetching stations: \(error)")
@@ -141,12 +138,14 @@ extension ContentView {
     private func getNearestSettlement() {
         let client = Client(
             serverURL: try! Servers.server1(),
-            transport: URLSessionTransport()
+            transport: URLSessionTransport(),
+            middlewares: [
+            AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+            ]
         )
         
         let service = NearestSettlementService(
-            client: client,
-            apikey: self.apiKey
+            client: client
         )
         
         Task {
@@ -165,12 +164,15 @@ extension ContentView {
     private func getThread() {
         let client = Client(
             serverURL: try! Servers.server1(),
-            transport: URLSessionTransport()
+            transport: URLSessionTransport(),
+            middlewares: [
+            AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+            ]
         )
         
         let service = SingleThreadService(
-            client: client,
-            apikey: self.apiKey)
+            client: client
+        )
         
         Task {
             do {
@@ -187,12 +189,15 @@ extension ContentView {
     private func getScheduleForStation() {
         let client = Client(
             serverURL: try! Servers.server1(),
-            transport: URLSessionTransport()
+            transport: URLSessionTransport(),
+            middlewares: [
+            AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+            ]
         )
         
         let service = RoutesScheduleForStationService(
-            client: client,
-            apikey: self.apiKey)
+            client: client
+        )
         
         Task {
             do {
@@ -210,12 +215,14 @@ extension ContentView {
     private func routes() {
         let client = Client(
             serverURL: try! Servers.server1(),
-            transport: URLSessionTransport()
+            transport: URLSessionTransport(),
+            middlewares: [
+            AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+            ]
         )
         
         let service = RoutesSchedulesBetweenStationsService(
-            client: client,
-            apikey: self.apiKey
+            client: client
         )
         Task {
             do {
@@ -234,12 +241,14 @@ extension ContentView {
     private func stations() {
         let client = Client(
             serverURL: try! Servers.server1(),
-            transport: URLSessionTransport()
+            transport: URLSessionTransport(),
+            middlewares: [
+            AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+            ]
         )
         
         let service = NearestStationsService(
-            client: client,
-            apikey: self.apiKey
+            client: client
         )
         
         Task {

@@ -33,9 +33,9 @@ paths:
       operationId: getRoutesSchedulesBetweenStations
       parameters:
       - name: apikey
-        in: query
+        in: header
         description: API key
-        required: true
+        required: false
         schema:
           type: string
       - name: from
@@ -123,7 +123,7 @@ paths:
       - name: apikey
         in: query
         description: API key
-        required: true
+        required: false
         schema:
           type: string
       - name: lat
@@ -174,7 +174,7 @@ paths:
       - name: apikey
         in: query
         description: API key
-        required: true
+        required: false
         schema:
           type: string
       - name: station
@@ -261,7 +261,7 @@ paths:
       - name: apikey
         in: query
         description: API key
-        required: true
+        required: false
         schema:
           type: string
       - name: uid
@@ -324,7 +324,7 @@ paths:
       - name: apikey
         in: query
         description: API key
-        required: true
+        required: false
         schema:
           type: string
       - name: lat
@@ -376,7 +376,7 @@ paths:
       - name: apikey
         in: query
         description: API key
-        required: true
+        required: false
         schema:
           type: string
       - name: code
@@ -429,7 +429,7 @@ paths:
       - name: apikey
         in: query
         description: API key
-        required: true
+        required: false
         schema:
           type: string
       - name: lang
@@ -467,7 +467,7 @@ paths:
       - name: apikey
         in: query
         description: API key
-        required: true
+        required: false
         schema:
           type: string
       - name: format

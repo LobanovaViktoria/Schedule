@@ -11,15 +11,13 @@ protocol RoutesScheduleForStationServiceProtocol {
     ) async throws -> ScheduleForStation
 }
 
-final class RoutesScheduleForStationService: 
+final class RoutesScheduleForStationService:
     RoutesScheduleForStationServiceProtocol {
     
     private let client: Client
-    private let apikey: String
-    
-    init(client: Client, apikey: String) {
+   
+    init(client: Client) {
         self.client = client
-        self.apikey = apikey
     }
     
     func getRoutesScheduleForStation(
@@ -28,7 +26,6 @@ final class RoutesScheduleForStationService:
     ) async throws -> ScheduleForStation {
         let response = try await client.getRoutesScheduleForStation(
             query: .init(
-                apikey: apikey,
                 station: station,
                 date: date
             )

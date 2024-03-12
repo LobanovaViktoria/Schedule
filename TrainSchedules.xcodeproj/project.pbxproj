@@ -24,6 +24,7 @@
 		328DAB342B9DA11100E62866 /* CarriersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328DAB332B9DA11100E62866 /* CarriersService.swift */; };
 		32D591012B9C610C0056941B /* RoutesScheduleForStationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D591002B9C610C0056941B /* RoutesScheduleForStationService.swift */; };
 		32EDE0F92B9B592B00C3F723 /* RoutesSchedulesBetweenStationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDE0F82B9B592B00C3F723 /* RoutesSchedulesBetweenStationsService.swift */; };
+		32F85A592BA038C8005D04BE /* AuthenticationMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F85A582BA038C8005D04BE /* AuthenticationMiddleware.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		328DAB332B9DA11100E62866 /* CarriersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarriersService.swift; sourceTree = "<group>"; };
 		32D591002B9C610C0056941B /* RoutesScheduleForStationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesScheduleForStationService.swift; sourceTree = "<group>"; };
 		32EDE0F82B9B592B00C3F723 /* RoutesSchedulesBetweenStationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesSchedulesBetweenStationsService.swift; sourceTree = "<group>"; };
+		32F85A582BA038C8005D04BE /* AuthenticationMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationMiddleware.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				328DAB2C2B9D95AA00E62866 /* NearestSettlementService.swift */,
 				328DAB332B9DA11100E62866 /* CarriersService.swift */,
 				3241EC172B9DB61F0082380D /* StationsListService.swift */,
+				32F85A582BA038C8005D04BE /* AuthenticationMiddleware.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				32D591012B9C610C0056941B /* RoutesScheduleForStationService.swift in Sources */,
 				3241EC182B9DB61F0082380D /* StationsListService.swift in Sources */,
 				328DAB342B9DA11100E62866 /* CarriersService.swift in Sources */,
+				32F85A592BA038C8005D04BE /* AuthenticationMiddleware.swift in Sources */,
 				328DAB302B9D979500E62866 /* CustomButton.swift in Sources */,
 				3234B8002B9B02700060F36D /* NearestStationsService.swift in Sources */,
 				3234B7E02B9AF2820060F36D /* TrainSchedulesApp.swift in Sources */,

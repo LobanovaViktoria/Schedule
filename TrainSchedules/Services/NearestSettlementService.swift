@@ -14,11 +14,9 @@ protocol NearestSettlementsServiceProtocol {
 final class NearestSettlementService: NearestSettlementsServiceProtocol {
     
     private let client: Client
-    private let apikey: String
     
-    init(client: Client, apikey: String) {
+    init(client: Client) {
         self.client = client
-        self.apikey = apikey
     }
     
     func getNearestSettlement(
@@ -26,12 +24,12 @@ final class NearestSettlementService: NearestSettlementsServiceProtocol {
         lng: Double
     ) async throws -> NearestSettlement {
         
-        let response = try await client.getNearestSettlement(query: .init(
-            apikey: apikey,
-            lat: lat,
-            lng: lng
-        ))
+        let response = try await client.getNearestSettlement(
+            query: .init(
+                lat: lat,
+                lng: lng
+            )
+        )
         return try response.ok.body.json
     }
 }
-
