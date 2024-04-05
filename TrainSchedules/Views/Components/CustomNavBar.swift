@@ -8,11 +8,42 @@
 import SwiftUI
 
 struct CustomNavBar: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    
+    // MARK: - Properties
+    
+    let actionForLeftButton: () -> ()
+    let title: String
+    
+    // MARK: - Init
+    
+    init(
+        actionForLeftButton: @escaping () -> (),
+        title: String
+    ) {
+        self.actionForLeftButton = actionForLeftButton
+        self.title = title
     }
-}
-
-#Preview {
-    CustomNavBar()
+      
+    // MARK: - Body
+    
+    var body: some View {
+        HStack {
+            Button {
+                actionForLeftButton()
+            } label: {
+                Image(
+                    systemName: "chevron.backward"
+                )
+                .foregroundStyle(Color.black100White100)
+            }
+            .padding(.leading, 8)
+            
+            Text(title)
+                .foregroundStyle(Color.black100White100)
+                .font(.system(size: 17, weight: .bold))
+                .frame(
+                    maxWidth: .infinity
+                )
+        }
+    }
 }

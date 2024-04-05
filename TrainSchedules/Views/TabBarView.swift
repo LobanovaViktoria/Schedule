@@ -25,24 +25,25 @@ struct TabBarView: View {
         VStack {
             
             TabView(selection: $selectedTab) {
-                ZStack {
-                    VStack(spacing: 0) {
-                        StationSelectionView()
-                        dividerForTabBar
+                    ZStack {
+                        VStack(spacing: 0) {
+                            MainView()
+                            dividerForTabBar
+                        }
                     }
-                }
                 .tabItem {
                     Image(systemName: "arrow.up.message.fill")
                 }
                 .tag(0)
                 .edgesIgnoringSafeArea(.top)
                 
-                ZStack {
-                    VStack(spacing: 0) {
-                        SettingsView()
-                        dividerForTabBar
+                    ZStack {
+                        VStack(spacing: 0) {
+                            SettingsView()
+                            dividerForTabBar
+                        }
                     }
-                }
+            
                 .tabItem {
                     Image(systemName: "gearshape.fill")
                 }

@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		321009782B9B0B63001152FF /* OpenAPIRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 321009772B9B0B63001152FF /* OpenAPIRuntime */; };
 		3210097B2B9B0B84001152FF /* OpenAPIURLSession in Frameworks */ = {isa = PBXBuildFile; productRef = 3210097A2B9B0B84001152FF /* OpenAPIURLSession */; };
+		322439E42BBFFBFB003E411A /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322439E32BBFFBFB003E411A /* SearchBar.swift */; };
+		322439E72BBFFE14003E411A /* SelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322439E62BBFFE14003E411A /* SelectionCell.swift */; };
 		3234B7E02B9AF2820060F36D /* TrainSchedulesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234B7DF2B9AF2820060F36D /* TrainSchedulesApp.swift */; };
-		3234B7E22B9AF2820060F36D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234B7E12B9AF2820060F36D /* ContentView.swift */; };
+		3234B7E22B9AF2820060F36D /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234B7E12B9AF2820060F36D /* TabBarView.swift */; };
 		3234B7E42B9AF2840060F36D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3234B7E32B9AF2840060F36D /* Assets.xcassets */; };
 		3234B7E72B9AF2840060F36D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3234B7E62B9AF2840060F36D /* Preview Assets.xcassets */; };
 		3234B7FB2B9B005C0060F36D /* openapi-generator-config.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 3234B7FA2B9B005C0060F36D /* openapi-generator-config.yaml */; };
@@ -22,15 +24,24 @@
 		328DAB2D2B9D95AA00E62866 /* NearestSettlementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328DAB2C2B9D95AA00E62866 /* NearestSettlementService.swift */; };
 		328DAB302B9D979500E62866 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328DAB2F2B9D979500E62866 /* CustomButton.swift */; };
 		328DAB342B9DA11100E62866 /* CarriersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328DAB332B9DA11100E62866 /* CarriersService.swift */; };
+		32927A172BBDA0C900A4106A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32927A162BBDA0C900A4106A /* MainView.swift */; };
+		32927A1A2BBDA0E000A4106A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32927A192BBDA0E000A4106A /* SettingsView.swift */; };
+		32927A232BBEA84A00A4106A /* GridCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32927A222BBEA84A00A4106A /* GridCellView.swift */; };
+		32927A252BBEAC9000A4106A /* SchedulesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32927A242BBEAC9000A4106A /* SchedulesViewModel.swift */; };
+		32927A292BBEACE500A4106A /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32927A282BBEACE500A4106A /* Story.swift */; };
+		32927A302BBECCA400A4106A /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32927A2F2BBECCA400A4106A /* SelectionView.swift */; };
+		32CE0A7A2BBFF6C20029DE80 /* CustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CE0A792BBFF6C20029DE80 /* CustomNavBar.swift */; };
 		32D591012B9C610C0056941B /* RoutesScheduleForStationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D591002B9C610C0056941B /* RoutesScheduleForStationService.swift */; };
 		32EDE0F92B9B592B00C3F723 /* RoutesSchedulesBetweenStationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDE0F82B9B592B00C3F723 /* RoutesSchedulesBetweenStationsService.swift */; };
 		32F85A592BA038C8005D04BE /* AuthenticationMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F85A582BA038C8005D04BE /* AuthenticationMiddleware.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		322439E32BBFFBFB003E411A /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		322439E62BBFFE14003E411A /* SelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionCell.swift; sourceTree = "<group>"; };
 		3234B7DC2B9AF2820060F36D /* TrainSchedules.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainSchedules.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3234B7DF2B9AF2820060F36D /* TrainSchedulesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainSchedulesApp.swift; sourceTree = "<group>"; };
-		3234B7E12B9AF2820060F36D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3234B7E12B9AF2820060F36D /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		3234B7E32B9AF2840060F36D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3234B7E62B9AF2840060F36D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3234B7FA2B9B005C0060F36D /* openapi-generator-config.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "openapi-generator-config.yaml"; sourceTree = "<group>"; };
@@ -42,6 +53,13 @@
 		328DAB2C2B9D95AA00E62866 /* NearestSettlementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestSettlementService.swift; sourceTree = "<group>"; };
 		328DAB2F2B9D979500E62866 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		328DAB332B9DA11100E62866 /* CarriersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarriersService.swift; sourceTree = "<group>"; };
+		32927A162BBDA0C900A4106A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		32927A192BBDA0E000A4106A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		32927A222BBEA84A00A4106A /* GridCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCellView.swift; sourceTree = "<group>"; };
+		32927A242BBEAC9000A4106A /* SchedulesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesViewModel.swift; sourceTree = "<group>"; };
+		32927A282BBEACE500A4106A /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		32927A2F2BBECCA400A4106A /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
+		32CE0A792BBFF6C20029DE80 /* CustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBar.swift; sourceTree = "<group>"; };
 		32D591002B9C610C0056941B /* RoutesScheduleForStationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesScheduleForStationService.swift; sourceTree = "<group>"; };
 		32EDE0F82B9B592B00C3F723 /* RoutesSchedulesBetweenStationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesSchedulesBetweenStationsService.swift; sourceTree = "<group>"; };
 		32F85A582BA038C8005D04BE /* AuthenticationMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationMiddleware.swift; sourceTree = "<group>"; };
@@ -80,8 +98,9 @@
 			isa = PBXGroup;
 			children = (
 				3234B7DF2B9AF2820060F36D /* TrainSchedulesApp.swift */,
-				3234B7E12B9AF2820060F36D /* ContentView.swift */,
-				328DAB2F2B9D979500E62866 /* CustomButton.swift */,
+				32927A272BBEACC600A4106A /* Models */,
+				32927A152BBD9EFA00A4106A /* ViewModel */,
+				32927A142BBD9EE800A4106A /* Views */,
 				32EDE0F62B9B590A00C3F723 /* Services */,
 				3234B7E32B9AF2840060F36D /* Assets.xcassets */,
 				3234B7E52B9AF2840060F36D /* Preview Content */,
@@ -97,6 +116,46 @@
 				3234B7E62B9AF2840060F36D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		32927A142BBD9EE800A4106A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				32927A212BBEA83700A4106A /* Components */,
+				3234B7E12B9AF2820060F36D /* TabBarView.swift */,
+				32927A162BBDA0C900A4106A /* MainView.swift */,
+				32927A192BBDA0E000A4106A /* SettingsView.swift */,
+				32927A2F2BBECCA400A4106A /* SelectionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		32927A152BBD9EFA00A4106A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				32927A242BBEAC9000A4106A /* SchedulesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		32927A212BBEA83700A4106A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				328DAB2F2B9D979500E62866 /* CustomButton.swift */,
+				32927A222BBEA84A00A4106A /* GridCellView.swift */,
+				32CE0A792BBFF6C20029DE80 /* CustomNavBar.swift */,
+				322439E32BBFFBFB003E411A /* SearchBar.swift */,
+				322439E62BBFFE14003E411A /* SelectionCell.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		32927A272BBEACC600A4106A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				32927A282BBEACE500A4106A /* Story.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		32EDE0F62B9B590A00C3F723 /* Services */ = {
@@ -199,16 +258,25 @@
 			files = (
 				328DAB2D2B9D95AA00E62866 /* NearestSettlementService.swift in Sources */,
 				3241EC1B2B9DC62B0082380D /* CopyrightService.swift in Sources */,
+				322439E72BBFFE14003E411A /* SelectionCell.swift in Sources */,
+				32927A292BBEACE500A4106A /* Story.swift in Sources */,
 				32EDE0F92B9B592B00C3F723 /* RoutesSchedulesBetweenStationsService.swift in Sources */,
-				3234B7E22B9AF2820060F36D /* ContentView.swift in Sources */,
+				32927A232BBEA84A00A4106A /* GridCellView.swift in Sources */,
+				32927A302BBECCA400A4106A /* SelectionView.swift in Sources */,
+				3234B7E22B9AF2820060F36D /* TabBarView.swift in Sources */,
 				32D591012B9C610C0056941B /* RoutesScheduleForStationService.swift in Sources */,
 				3241EC182B9DB61F0082380D /* StationsListService.swift in Sources */,
 				328DAB342B9DA11100E62866 /* CarriersService.swift in Sources */,
+				32927A1A2BBDA0E000A4106A /* SettingsView.swift in Sources */,
 				32F85A592BA038C8005D04BE /* AuthenticationMiddleware.swift in Sources */,
 				328DAB302B9D979500E62866 /* CustomButton.swift in Sources */,
+				32CE0A7A2BBFF6C20029DE80 /* CustomNavBar.swift in Sources */,
 				3234B8002B9B02700060F36D /* NearestStationsService.swift in Sources */,
+				32927A172BBDA0C900A4106A /* MainView.swift in Sources */,
 				3234B7E02B9AF2820060F36D /* TrainSchedulesApp.swift in Sources */,
+				322439E42BBFFBFB003E411A /* SearchBar.swift in Sources */,
 				328DAB2A2B9C8DD300E62866 /* SingleThreadService.swift in Sources */,
+				32927A252BBEAC9000A4106A /* SchedulesViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

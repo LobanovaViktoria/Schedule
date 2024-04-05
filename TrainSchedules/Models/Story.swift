@@ -10,5 +10,11 @@ import Foundation
 struct Story: Hashable, Identifiable {
     var id = UUID()
     var images: [String]
-    var text: String
+    var title: String
+    var subTitle: String
+}
+
+struct Station: Hashable, Identifiable {
+    var id = UUID()
+    
 }
