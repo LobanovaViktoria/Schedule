@@ -9,69 +9,65 @@ import SwiftUI
 import OpenAPIRuntime
 import OpenAPIURLSession
 
-struct ContentView: View {
+struct TabBarView: View {
     
     private let apiKey = "e7010142-c5c6-4200-b85c-deb1ffb7dedb"
     
+    @State private var selectedTab = 0
+    
+    init() {
+        UITabBar.appearance().barTintColor = UIColor.black100White100
+        UITabBar.appearance().backgroundColor = UIColor.white100Black30
+    }
+    
     var body: some View {
         
-        ScrollView {
+        VStack {
             
-            Text("API Яндекс Расписаний")
-                .font(.title)
-                .padding(.vertical, 30)
-            
-            CustomButton(
-                title: "Расписание рейсов между станциями") {
-                    routes()
+            TabView(selection: $selectedTab) {
+                ZStack {
+                    VStack(spacing: 0) {
+                        StationSelectionView()
+                        dividerForTabBar
+                    }
                 }
-            
-            CustomButton(
-                title: "Расписание рейсов по станции") {
-                    getScheduleForStation()
+                .tabItem {
+                    Image(systemName: "arrow.up.message.fill")
                 }
-            
-            CustomButton(
-                title: "Список станций следования") {
-                    getThread()
+                .tag(0)
+                .edgesIgnoringSafeArea(.top)
+                
+                ZStack {
+                    VStack(spacing: 0) {
+                        SettingsView()
+                        dividerForTabBar
+                    }
                 }
-            
-            CustomButton(
-                title: "Список ближайших станций") {
-                    stations()
+                .tabItem {
+                    Image(systemName: "gearshape.fill")
                 }
-            
-            CustomButton(
-                title: "Ближайший город") {
-                    getNearestSettlement()
-                }
-            
-            CustomButton(
-                title: "Информация о перевозчике") {
-                    getCarriers()
-                }
-            
-            CustomButton(
-                title: "Список всех доступных станций") {
-                    getStationList()
-                }
-            
-            CustomButton(
-                title: "Копирайт Яндекс Расписаний") {
-                    getCopyright()
-                }
+                .tag(1)
+                .edgesIgnoringSafeArea(.top)
+            }
+            .tint(Color.black100White100)
         }
     }
 }
 
-extension ContentView {
+extension TabBarView {
+    
+    private var dividerForTabBar: some View {
+        Divider()
+            .background(Color.black30Black100)
+            .frame(height: 1)
+    }
     
     private func getCopyright() {
         let client = Client(
             serverURL: try! Servers.server1(),
             transport: URLSessionTransport(),
             middlewares: [
-            AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+                AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
             ]
         )
         
@@ -94,7 +90,7 @@ extension ContentView {
             serverURL: try! Servers.server1(),
             transport: URLSessionTransport(),
             middlewares: [
-            AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+                AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
             ]
         )
         
@@ -140,7 +136,7 @@ extension ContentView {
             serverURL: try! Servers.server1(),
             transport: URLSessionTransport(),
             middlewares: [
-            AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+                AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
             ]
         )
         
@@ -166,7 +162,7 @@ extension ContentView {
             serverURL: try! Servers.server1(),
             transport: URLSessionTransport(),
             middlewares: [
-            AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+                AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
             ]
         )
         
@@ -191,7 +187,7 @@ extension ContentView {
             serverURL: try! Servers.server1(),
             transport: URLSessionTransport(),
             middlewares: [
-            AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+                AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
             ]
         )
         
@@ -217,7 +213,7 @@ extension ContentView {
             serverURL: try! Servers.server1(),
             transport: URLSessionTransport(),
             middlewares: [
-            AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+                AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
             ]
         )
         
@@ -243,7 +239,7 @@ extension ContentView {
             serverURL: try! Servers.server1(),
             transport: URLSessionTransport(),
             middlewares: [
-            AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+                AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
             ]
         )
         
@@ -267,5 +263,5 @@ extension ContentView {
 }
 
 #Preview {
-    ContentView()
+    TabBarView()
 }
