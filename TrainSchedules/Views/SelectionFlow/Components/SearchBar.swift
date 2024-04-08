@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct SearchBar: View {
+    
+    // MARK: - Properties
+    
     @Binding var searchText: String
     @State var isSearching: Bool = false
     var placeholder = "Введите запрос"
+    
+    // MARK: - Body
     
     var body: some View {
         HStack (spacing: 0) {

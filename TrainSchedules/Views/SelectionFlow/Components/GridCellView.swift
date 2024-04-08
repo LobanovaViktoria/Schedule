@@ -23,7 +23,7 @@ struct GridCellView: View {
             Image(story.images.first ?? "")
                 .resizable()
                 .frame(
-                    width: width,
+                    width: isNew ? width - 4 : width,
                     height: height
                 )
                 .opacity(isNew ? 1 : 0.5)

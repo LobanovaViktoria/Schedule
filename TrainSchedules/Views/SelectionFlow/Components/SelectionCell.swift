@@ -27,23 +27,25 @@ struct SelectionCell: View {
     // MARK: - Body
     
     var body: some View {
-        HStack {
-            Text(title)
-                .font(.system(size: 17))
-                .foregroundStyle(Color.black100White100)
-                .padding(.leading, 16)
-                .frame(width: UIScreen.main.bounds.width - 44, alignment: .leading)
-            
-            Button {
-                action()
-            } label: {
+
+        Button {
+            action()
+        } label: {
+            HStack {
+                Text(title)
+                    .font(.system(size: 17))
+                    .foregroundStyle(Color.black100White100)
+                    .padding(.leading, 16)
+                    .frame(width: UIScreen.main.bounds.width - 60, alignment: .leading)
+                
                 Image(
                     systemName: "chevron.right"
                 )
                 .foregroundStyle(Color.black100White100)
             }
-            .padding(.trailing, 16)
+            .frame(height: 60)
         }
+        .padding(.horizontal, 16)
     }
 }
 

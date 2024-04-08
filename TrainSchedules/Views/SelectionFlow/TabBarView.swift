@@ -22,38 +22,31 @@ struct TabBarView: View {
     
     var body: some View {
         
-        VStack {
-            
-            TabView(selection: $selectedTab) {
-                    ZStack {
-                        VStack(spacing: 0) {
-                            MainView()
-                            dividerForTabBar
-                        }
-                    }
-                .tabItem {
-                    Image(systemName: "arrow.up.message.fill")
-                }
-                .tag(0)
-                .edgesIgnoringSafeArea(.top)
-                
-                    ZStack {
-                        VStack(spacing: 0) {
-                            SettingsView()
-                            dividerForTabBar
-                        }
-                    }
-            
-                .tabItem {
-                    Image(systemName: "gearshape.fill")
-                }
-                .tag(1)
-                .edgesIgnoringSafeArea(.top)
+        TabView(selection: $selectedTab) {
+            VStack(spacing: 0) {
+                MainView()
+                dividerForTabBar
             }
-            .tint(Color.black100White100)
+            .tabItem {
+                Image(systemName: "arrow.up.message.fill")
+            }
+            .tag(0)
+            .edgesIgnoringSafeArea(.top)
+            
+            VStack(spacing: 0) {
+                SettingsView()
+                dividerForTabBar
+            }
+            .tabItem {
+                Image(systemName: "gearshape.fill")
+            }
+            .tag(1)
+            .edgesIgnoringSafeArea(.top)
         }
+        .tint(Color.black100White100)
     }
 }
+
 
 extension TabBarView {
     
@@ -226,7 +219,7 @@ extension TabBarView {
                 let routes = try await service.getRoutesSchedulesBetweenStations(
                     from: "s2014001",
                     to: "s9600816",
-                    date: "2024-03-03",
+                    date: "2024-04-03",
                     limit: 20)
                 print(routes)
             } catch {

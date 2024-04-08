@@ -11,7 +11,7 @@ import SwiftUI
 struct TrainSchedulesApp: App {
     var body: some Scene {
         WindowGroup {
-            NavigationView {
+            NavigationView{
                 TabBarView()
             }
         }

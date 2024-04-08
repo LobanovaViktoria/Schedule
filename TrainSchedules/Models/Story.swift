@@ -14,7 +14,13 @@ struct Story: Hashable, Identifiable {
     var subTitle: String
 }
 
+struct City: Hashable, Identifiable {
+    var id = UUID()
+    var name: String
+    var stations: [Station]
+}
+
 struct Station: Hashable, Identifiable {
     var id = UUID()
-    
+    var name: String
 }
