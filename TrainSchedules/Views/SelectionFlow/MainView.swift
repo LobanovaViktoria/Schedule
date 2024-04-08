@@ -33,13 +33,6 @@ struct MainView: View {
             VStack {
                 scrollWithStories
                     .padding(.top, 64)
-                    .sheet(
-                        isPresented: $isShowingStory) {
-                            if let story = viewModel.selectedStory{
-                                StoriesView(story: story)
-                            }
-                        }
-                
                 fromTo
                     .frame(height: 128)
                     .padding(.top, 44)
@@ -54,7 +47,6 @@ struct MainView: View {
                         .padding(.top, 16)
                 }
                 Spacer()
-                
                     .navigationBarHidden(true)
             }
         }
@@ -74,6 +66,14 @@ extension MainView {
                             viewModel.selectedStory = story
                             isShowingStory = true
                         }
+                        .fullScreenCover(
+                            isPresented: $isShowingStory,
+                            content: {
+                                if let story = viewModel.selectedStory {
+                                    StoriesView(story: story)
+                                }
+                            }
+                        )
                 }
             }
             .padding(.horizontal, 20)

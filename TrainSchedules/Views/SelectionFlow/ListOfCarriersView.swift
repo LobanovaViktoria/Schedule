@@ -27,6 +27,7 @@ struct ListOfCarriersView: View {
                     .padding(.bottom, 16)
                     .padding(.horizontal, 16)
                 scrollWithCarriers
+                    .navigationBarHidden(true)
             }
             
             VStack {
@@ -34,7 +35,7 @@ struct ListOfCarriersView: View {
                 buttonDetail
                     .padding(.bottom, 24)
             }
-            .navigationBarBackButtonHidden()
+            .navigationBarHidden(true)
         }
     }
 }
@@ -90,5 +91,9 @@ extension ListOfCarriersView {
 // MARK: - Preview
 
 #Preview {
-    ListOfCarriersView(viewModel: SchedulesViewModel(stories: [], cities: []))
+    ListOfCarriersView(
+        viewModel: SchedulesViewModel(
+            stories: [], cities: []
+        )
+    )
 }

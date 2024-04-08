@@ -33,11 +33,17 @@ struct CarrierCell: View {
                             Text("РЖД")
                                 .font(.system(size: 17))
                                 .foregroundStyle(Color.blackUniversal)
-                                .frame(width: UIScreen.main.bounds.width - 185, alignment: .leading)
+                                .frame(
+                                    width: UIScreen.main.bounds.width - 185,
+                                    alignment: .leading
+                                )
                             Text("С пересадкой в Костроме")
                                 .font(.system(size: 12))
                                 .foregroundStyle(Color.redUniversal)
-                                .frame(width: UIScreen.main.bounds.width - 185, alignment: .leading)
+                                .frame(
+                                    width: UIScreen.main.bounds.width - 185,
+                                    alignment: .leading
+                                )
                         }
                         .padding(.trailing, 4)
                         

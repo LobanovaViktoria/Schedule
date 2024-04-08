@@ -22,31 +22,38 @@ struct TabBarView: View {
     
     var body: some View {
         
-        TabView(selection: $selectedTab) {
-            VStack(spacing: 0) {
-                MainView()
-                dividerForTabBar
-            }
-            .tabItem {
-                Image(systemName: "arrow.up.message.fill")
-            }
-            .tag(0)
-            .edgesIgnoringSafeArea(.top)
+        VStack {
             
-            VStack(spacing: 0) {
-                SettingsView()
-                dividerForTabBar
+            TabView(selection: $selectedTab) {
+                ZStack {
+                    VStack(spacing: 0) {
+                        MainView()
+                        dividerForTabBar
+                    }
+                }
+                .tabItem {
+                    Image(systemName: "arrow.up.message.fill")
+                }
+                .tag(0)
+                .edgesIgnoringSafeArea(.top)
+                
+                ZStack {
+                    VStack(spacing: 0) {
+                        SettingsView()
+                        dividerForTabBar
+                    }
+                }
+                
+                .tabItem {
+                    Image(systemName: "gearshape.fill")
+                }
+                .tag(1)
+                .edgesIgnoringSafeArea(.top)
             }
-            .tabItem {
-                Image(systemName: "gearshape.fill")
-            }
-            .tag(1)
-            .edgesIgnoringSafeArea(.top)
+            .accentColor(Color.black100White100)
         }
-        .tint(Color.black100White100)
     }
 }
-
 
 extension TabBarView {
     

@@ -37,7 +37,7 @@ struct FiltersView: View {
             secondTitle
             withOrWithoutTransfersView
             applyButton
-                .navigationBarBackButtonHidden()
+                .navigationBarHidden(true)
         }
     }
 }
@@ -67,12 +67,16 @@ extension FiltersView {
             FilterCell(
                 isMultipleChoice: true,
                 isSelected:
-                    viewModel.selectedTimeFilter.contains(massiveTime[index])
+                    viewModel.selectedTimeFilter.contains(
+                        massiveTime[index]
+                    )
                 ? true
                 : false,
                 title: massiveTime[index],
                 action: {
-                    viewModel.updateSelectedTime(time: massiveTime[index])
+                    viewModel.updateSelectedTime(
+                        time: massiveTime[index]
+                    )
                 }
             )
         }
@@ -94,12 +98,16 @@ extension FiltersView {
             FilterCell(
                 isMultipleChoice: false,
                 isSelected:
-                    viewModel.selectedTransferFilter.contains(withOrWithoutTransfers[index])
+                    viewModel.selectedTransferFilter.contains(
+                        withOrWithoutTransfers[index]
+                    )
                 ? true
                 : false,
                 title: withOrWithoutTransfers[index],
                 action: {
-                    viewModel.updateSelectedTransfer(transfer: withOrWithoutTransfers[index])
+                    viewModel.updateSelectedTransfer(
+                        transfer: withOrWithoutTransfers[index]
+                    )
                 }
             )
         }
@@ -120,7 +128,6 @@ extension FiltersView {
             } else {
                 viewModel.isApplyFilters = false
             }
-            
         }
     }
 }
@@ -128,5 +135,9 @@ extension FiltersView {
 // MARK: - Preview
 
 #Preview {
-    FiltersView(viewModel: SchedulesViewModel(stories: [], cities: []))
+    FiltersView(
+        viewModel: SchedulesViewModel(
+            stories: [], cities: []
+        )
+    )
 }

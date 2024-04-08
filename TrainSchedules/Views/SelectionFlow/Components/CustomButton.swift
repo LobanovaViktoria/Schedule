@@ -48,8 +48,8 @@ struct CustomButton: View {
                             .scaledToFit()
                             .foregroundStyle(Color.redUniversal)
                             .frame(
-                            width: 8,
-                            height: 8
+                                width: 8,
+                                height: 8
                             )
                     }
                 }
@@ -58,9 +58,9 @@ struct CustomButton: View {
 }
 
 #Preview {
-   CustomButton(
-    title: "Button",
-    width: 300, 
-    isRedDot: true
-   )
+    CustomButton(
+        title: "Button",
+        width: 300, 
+        isRedDot: true
+    )
 }

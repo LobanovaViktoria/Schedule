@@ -18,6 +18,8 @@ struct GridCellView: View {
     let story: Story
     let isNew: Bool
     
+    // MARK: - Body
+    
     var body: some View {
         ZStack {
             Image(story.images.first ?? "")

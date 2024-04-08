@@ -36,7 +36,10 @@ struct SelectionCell: View {
                     .font(.system(size: 17))
                     .foregroundStyle(Color.black100White100)
                     .padding(.leading, 16)
-                    .frame(width: UIScreen.main.bounds.width - 60, alignment: .leading)
+                    .frame(
+                        width: UIScreen.main.bounds.width - 60,
+                        alignment: .leading
+                    )
                 
                 Image(
                     systemName: "chevron.right"

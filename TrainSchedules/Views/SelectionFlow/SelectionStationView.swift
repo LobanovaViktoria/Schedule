@@ -19,21 +19,14 @@ struct SelectionStationView: View {
     
     @ObservedObject var viewModel: SchedulesViewModel
     
-        var searchResultStation: [Station] {
-            if searchString.isEmpty {
-                return viewModel.selectedCityFrom?.stations ?? []
-            } else {
-                return viewModel.selectedCityFrom?.stations.filter {
-                    $0.name.lowercased().contains(searchString.lowercased())
-                } ?? []
-            }
+    var searchResultStation: [Station] {
+        if searchString.isEmpty {
+            return viewModel.selectedCityFrom?.stations ?? []
+        } else {
+            return viewModel.selectedCityFrom?.stations.filter {
+                $0.name.lowercased().contains(searchString.lowercased())
+            } ?? []
         }
-    
-    init(typeOfFromTo: TypeOfFromTo, searchString: String = "", viewModel: SchedulesViewModel) {
-        self.typeOfFromTo = typeOfFromTo
-        self.searchString = searchString
-        self.viewModel = viewModel
-        print("init SelectionStationView")
     }
     
     // MARK: - Body
@@ -47,7 +40,7 @@ struct SelectionStationView: View {
                     .font(.system(size: 24, weight: .bold))
                     .foregroundStyle(Color.black100White100)
             }
-        
+            
             VStack {
                 CustomNavBar(
                     actionForLeftButton: {
@@ -89,7 +82,7 @@ struct SelectionStationView: View {
                 }
                 Spacer()
             }
-                    .navigationBarBackButtonHidden()
+            .navigationBarHidden(true)
         }
     }
 }

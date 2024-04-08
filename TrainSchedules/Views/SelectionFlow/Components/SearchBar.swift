@@ -56,7 +56,12 @@ struct SearchBar: View {
                 )
             }
             .frame(height: 37)
-            .background(Color(red: 118.0/255, green: 118.0/255, blue: 128.0/255).opacity(0.12))
+            .background(
+                Color(
+                    red: 118.0/255,
+                    green: 118.0/255,
+                    blue: 128.0/255).opacity(0.12)
+            )
             .cornerRadius(10)
         }
         .frame(height: 37)

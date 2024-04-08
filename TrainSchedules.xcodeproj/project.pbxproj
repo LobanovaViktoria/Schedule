@@ -20,6 +20,7 @@
 		3234B8002B9B02700060F36D /* NearestStationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234B7FF2B9B02700060F36D /* NearestStationsService.swift */; };
 		3241EC182B9DB61F0082380D /* StationsListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3241EC172B9DB61F0082380D /* StationsListService.swift */; };
 		3241EC1B2B9DC62B0082380D /* CopyrightService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3241EC1A2B9DC62B0082380D /* CopyrightService.swift */; };
+		326897F42BC3E60A001432DB /* InfoCellAboutCarrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326897F32BC3E60A001432DB /* InfoCellAboutCarrier.swift */; };
 		3273E7642BC01D3700EC4EDE /* SelectionStationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3273E7632BC01D3700EC4EDE /* SelectionStationView.swift */; };
 		3273E7662BC03D3500EC4EDE /* ListOfCarriersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3273E7652BC03D3500EC4EDE /* ListOfCarriersView.swift */; };
 		3273E76A2BC074F000EC4EDE /* CarrierCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3273E7692BC074F000EC4EDE /* CarrierCell.swift */; };
@@ -56,6 +57,7 @@
 		3234B7FF2B9B02700060F36D /* NearestStationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestStationsService.swift; sourceTree = "<group>"; };
 		3241EC172B9DB61F0082380D /* StationsListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsListService.swift; sourceTree = "<group>"; };
 		3241EC1A2B9DC62B0082380D /* CopyrightService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CopyrightService.swift; path = TrainSchedules/Services/CopyrightService.swift; sourceTree = SOURCE_ROOT; };
+		326897F32BC3E60A001432DB /* InfoCellAboutCarrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCellAboutCarrier.swift; sourceTree = "<group>"; };
 		3273E7632BC01D3700EC4EDE /* SelectionStationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionStationView.swift; sourceTree = "<group>"; };
 		3273E7652BC03D3500EC4EDE /* ListOfCarriersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfCarriersView.swift; sourceTree = "<group>"; };
 		3273E7692BC074F000EC4EDE /* CarrierCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrierCell.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				322439E62BBFFE14003E411A /* SelectionCell.swift */,
 				3273E7692BC074F000EC4EDE /* CarrierCell.swift */,
 				3273E7732BC132B500EC4EDE /* FilterCell.swift */,
+				326897F32BC3E60A001432DB /* InfoCellAboutCarrier.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				32CE0A7A2BBFF6C20029DE80 /* CustomNavBar.swift in Sources */,
 				3234B8002B9B02700060F36D /* NearestStationsService.swift in Sources */,
 				3273E7772BC14D5500EC4EDE /* CarrierDetailView.swift in Sources */,
+				326897F42BC3E60A001432DB /* InfoCellAboutCarrier.swift in Sources */,
 				32927A172BBDA0C900A4106A /* MainView.swift in Sources */,
 				3234B7E02B9AF2820060F36D /* TrainSchedulesApp.swift in Sources */,
 				3273E7642BC01D3700EC4EDE /* SelectionStationView.swift in Sources */,
