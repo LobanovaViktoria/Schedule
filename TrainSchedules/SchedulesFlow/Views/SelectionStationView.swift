@@ -14,9 +14,8 @@ struct SelectionStationView: View {
     var typeOfFromTo: TypeOfFromTo
     
     @State private var searchString = ""
-    
-    @Environment(\.presentationMode) var presentationMode
-    
+    @Binding var showingSelectionStation: Bool
+   
     @ObservedObject var viewModel: SchedulesViewModel
     
     var searchResultStation: [Station] {
@@ -28,6 +27,7 @@ struct SelectionStationView: View {
             } ?? []
         }
     }
+    
     
     // MARK: - Body
     
@@ -44,7 +44,8 @@ struct SelectionStationView: View {
             VStack {
                 CustomNavBar(
                     actionForLeftButton: {
-                        presentationMode.wrappedValue.dismiss()
+                        viewModel.path.removeLast()
+                        showingSelectionStation = false
                     },
                     title: "Выбор станции"
                 )
@@ -59,9 +60,13 @@ struct SelectionStationView: View {
                         ForEach(searchResultStation) { station in
                             SelectionCell(
                                 action: {
+                                    
                                     viewModel.selectedStationFrom = station
                                     viewModel.getTitleForListOfCarriers()
-                                    presentationMode.wrappedValue.dismiss()
+                                    showingSelectionStation = false
+                                    for _ in 0..<viewModel.path.count {
+                                        viewModel.path.removeLast()
+                                    }
                                 },
                                 title: station.name
                             )
@@ -71,9 +76,14 @@ struct SelectionStationView: View {
                         ForEach(searchResultStation) { station in
                             SelectionCell(
                                 action: {
+                                   
                                     viewModel.selectedStationTo = station
                                     viewModel.getTitleForListOfCarriers()
-                                    presentationMode.wrappedValue.dismiss()
+                                    showingSelectionStation = false
+                                    for _ in 0..<viewModel.path.count {
+                                        viewModel.path.removeLast()
+                                    }
+                                   // presentationMode.wrappedValue.dismiss()
                                 },
                                 title: station.name
                             )

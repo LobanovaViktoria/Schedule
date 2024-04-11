@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32066CD62BC81A5300288FEE /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32066CD52BC81A5300288FEE /* AppLauncher.swift */; };
+		32066CFD2BC86DEE00288FEE /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32066CFC2BC86DEE00288FEE /* SplashScreen.swift */; };
 		321009782B9B0B63001152FF /* OpenAPIRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 321009772B9B0B63001152FF /* OpenAPIRuntime */; };
 		3210097B2B9B0B84001152FF /* OpenAPIURLSession in Frameworks */ = {isa = PBXBuildFile; productRef = 3210097A2B9B0B84001152FF /* OpenAPIURLSession */; };
 		322439E42BBFFBFB003E411A /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322439E32BBFFBFB003E411A /* SearchBar.swift */; };
@@ -45,6 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32066CD52BC81A5300288FEE /* AppLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLauncher.swift; sourceTree = "<group>"; };
+		32066CFC2BC86DEE00288FEE /* SplashScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SplashScreen.swift; path = TrainSchedules/Splash/SplashScreen.swift; sourceTree = SOURCE_ROOT; };
 		322439E32BBFFBFB003E411A /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		322439E62BBFFE14003E411A /* SelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionCell.swift; sourceTree = "<group>"; };
 		3234B7DC2B9AF2820060F36D /* TrainSchedules.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainSchedules.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +98,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32066CF72BC86C7200288FEE /* SchedulesFlow */ = {
+			isa = PBXGroup;
+			children = (
+				32066CF92BC86CBE00288FEE /* Views */,
+				32927A272BBEACC600A4106A /* Models */,
+				32927A152BBD9EFA00A4106A /* ViewModel */,
+				3273E77A2BC14E4E00EC4EDE /* SettingsFlow */,
+			);
+			path = SchedulesFlow;
+			sourceTree = "<group>";
+		};
+		32066CF82BC86CA400288FEE /* SettingsFlow */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SettingsFlow;
+			sourceTree = "<group>";
+		};
+		32066CF92BC86CBE00288FEE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				32927A212BBEA83700A4106A /* Components */,
+				32927A162BBDA0C900A4106A /* MainView.swift */,
+				32927A2F2BBECCA400A4106A /* SelectionCityView.swift */,
+				3273E7632BC01D3700EC4EDE /* SelectionStationView.swift */,
+				3273E7652BC03D3500EC4EDE /* ListOfCarriersView.swift */,
+				3273E76C2BC131ED00EC4EDE /* FiltersView.swift */,
+				3273E7762BC14D5500EC4EDE /* CarrierDetailView.swift */,
+				3273E7952BC15C3A00EC4EDE /* StoriesView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		32066CFA2BC86CD700288FEE /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				3234B7E12B9AF2820060F36D /* TabBarView.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		32066D222BC883ED00288FEE /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				32066CFC2BC86DEE00288FEE /* SplashScreen.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		3234B7D32B9AF2820060F36D = {
 			isa = PBXGroup;
 			children = (
@@ -113,15 +166,17 @@
 		3234B7DE2B9AF2820060F36D /* TrainSchedules */ = {
 			isa = PBXGroup;
 			children = (
+				32066D222BC883ED00288FEE /* Splash */,
 				3234B7DF2B9AF2820060F36D /* TrainSchedulesApp.swift */,
-				32927A272BBEACC600A4106A /* Models */,
-				32927A152BBD9EFA00A4106A /* ViewModel */,
-				32927A142BBD9EE800A4106A /* Views */,
+				32066CFA2BC86CD700288FEE /* TabBar */,
+				32066CF72BC86C7200288FEE /* SchedulesFlow */,
+				32066CF82BC86CA400288FEE /* SettingsFlow */,
 				32EDE0F62B9B590A00C3F723 /* Services */,
 				3234B7E32B9AF2840060F36D /* Assets.xcassets */,
 				3234B7E52B9AF2840060F36D /* Preview Content */,
 				3234B7FA2B9B005C0060F36D /* openapi-generator-config.yaml */,
 				3234B7FC2B9B00850060F36D /* openapi.yaml */,
+				32066CD52BC81A5300288FEE /* AppLauncher.swift */,
 			);
 			path = TrainSchedules;
 			sourceTree = "<group>";
@@ -134,25 +189,10 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		3273E7792BC14E3C00EC4EDE /* SelectionFlow */ = {
-			isa = PBXGroup;
-			children = (
-				3234B7E12B9AF2820060F36D /* TabBarView.swift */,
-				32927A162BBDA0C900A4106A /* MainView.swift */,
-				32927A2F2BBECCA400A4106A /* SelectionCityView.swift */,
-				3273E7632BC01D3700EC4EDE /* SelectionStationView.swift */,
-				3273E7652BC03D3500EC4EDE /* ListOfCarriersView.swift */,
-				3273E76C2BC131ED00EC4EDE /* FiltersView.swift */,
-				3273E7762BC14D5500EC4EDE /* CarrierDetailView.swift */,
-				32927A212BBEA83700A4106A /* Components */,
-				3273E7952BC15C3A00EC4EDE /* StoriesView.swift */,
-			);
-			path = SelectionFlow;
-			sourceTree = "<group>";
-		};
 		3273E77A2BC14E4E00EC4EDE /* SettingsFlow */ = {
 			isa = PBXGroup;
 			children = (
+				32927A142BBD9EE800A4106A /* Views */,
 				32927A192BBDA0E000A4106A /* SettingsView.swift */,
 			);
 			path = SettingsFlow;
@@ -161,8 +201,6 @@
 		32927A142BBD9EE800A4106A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3273E7792BC14E3C00EC4EDE /* SelectionFlow */,
-				3273E77A2BC14E4E00EC4EDE /* SettingsFlow */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -305,6 +343,7 @@
 				32927A292BBEACE500A4106A /* Story.swift in Sources */,
 				32EDE0F92B9B592B00C3F723 /* RoutesSchedulesBetweenStationsService.swift in Sources */,
 				32927A232BBEA84A00A4106A /* GridCellView.swift in Sources */,
+				32066CD62BC81A5300288FEE /* AppLauncher.swift in Sources */,
 				32927A302BBECCA400A4106A /* SelectionCityView.swift in Sources */,
 				3234B7E22B9AF2820060F36D /* TabBarView.swift in Sources */,
 				32D591012B9C610C0056941B /* RoutesScheduleForStationService.swift in Sources */,
@@ -318,6 +357,7 @@
 				3273E7772BC14D5500EC4EDE /* CarrierDetailView.swift in Sources */,
 				326897F42BC3E60A001432DB /* InfoCellAboutCarrier.swift in Sources */,
 				32927A172BBDA0C900A4106A /* MainView.swift in Sources */,
+				32066CFD2BC86DEE00288FEE /* SplashScreen.swift in Sources */,
 				3234B7E02B9AF2820060F36D /* TrainSchedulesApp.swift in Sources */,
 				3273E7642BC01D3700EC4EDE /* SelectionStationView.swift in Sources */,
 				322439E42BBFFBFB003E411A /* SearchBar.swift in Sources */,
@@ -390,7 +430,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -447,7 +487,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -473,7 +513,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -507,7 +547,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

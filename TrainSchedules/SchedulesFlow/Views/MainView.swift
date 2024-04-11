@@ -26,29 +26,32 @@ struct MainView: View {
     // MARK: - Body
     
     var body: some View {
-        ZStack {
-            
-            Color.white100Black30
-            
-            VStack {
-                scrollWithStories
-                    .padding(.top, 64)
-                fromTo
-                    .frame(height: 128)
-                    .padding(.top, 44)
+        NavigationStack(path: $viewModel.path) {
+            ZStack {
                 
-                if viewModel.selectedStationTo != nil
-                    && viewModel.selectedStationFrom != nil {
+                Color.white100Black30
+                
+                VStack {
+                    scrollWithStories
+                        .padding(.top, 24)
+                    fromTo
+                        .frame(height: 128)
+                        .padding(.top, 44)
                     
-                    searchButton
-                        .onTapGesture {
-                            print("Показать список")
-                        }
-                        .padding(.top, 16)
+                    if viewModel.selectedStationTo != nil
+                        && viewModel.selectedStationFrom != nil {
+                        
+                        searchButton
+                            .onTapGesture {
+                                print("Показать список")
+                            }
+                            .padding(.top, 16)
+                    }
+                    Spacer()
+                       
                 }
-                Spacer()
-                    .navigationBarHidden(true)
             }
+            .toolbar(.hidden, for: .navigationBar)
         }
     }
 }
@@ -70,7 +73,7 @@ extension MainView {
                             isPresented: $isShowingStory,
                             content: {
                                 if let story = viewModel.selectedStory {
-                                    StoriesView(story: story)
+                                    StoriesView(story: story).environmentObject(viewModel)
                                 }
                             }
                         )
@@ -116,6 +119,7 @@ extension MainView {
                 VStack(alignment: .leading, spacing: 28) {
                     Button {
                         isPresentingCityFrom = true
+                        viewModel.path.append("CityFrom")
                     } label: {
                         Text(viewModel.selectedStationFrom?.name == nil
                              ? from
@@ -136,13 +140,15 @@ extension MainView {
                     .fullScreenCover(
                         isPresented: $isPresentingCityFrom) {
                             SelectionCityView(
-                                typeOfFromTo: .from,
+                                typeOfFromTo: .from, 
+                                showingSelectionCity: $isPresentingCityFrom,
                                 viewModel: viewModel
                             )
                         }
                     
                     Button {
                         isPresentingCityTo = true
+                        viewModel.path.append("CityTo")
                     } label: {
                         Text(viewModel.selectedStationTo?.name == nil
                              ? to
@@ -163,7 +169,8 @@ extension MainView {
                     .fullScreenCover(
                         isPresented: $isPresentingCityTo) {
                             SelectionCityView(
-                                typeOfFromTo: .to,
+                                typeOfFromTo: .to, 
+                                showingSelectionCity: $isPresentingCityTo,
                                 viewModel: viewModel
                             )
                         }

@@ -20,12 +20,12 @@ struct SelectionCityView: View {
     
     var typeOfFromTo: TypeOfFromTo
     
+    @Binding var showingSelectionCity: Bool
+    
     @State private var searchString = ""
     @State private var isPresentingStationFrom = false
     @State private var isPresentingStationTo = false
     @State private var selectedCity: City? = nil
-    
-    @Environment(\.presentationMode) var presentationMode
     
     @ObservedObject var viewModel: SchedulesViewModel
     
@@ -38,7 +38,7 @@ struct SelectionCityView: View {
             }
         }
     }
-    
+   
     // MARK: - Body
     
     var body: some View {
@@ -53,8 +53,8 @@ struct SelectionCityView: View {
             VStack {
                 CustomNavBar(
                     actionForLeftButton: {
-                        presentationMode.wrappedValue.dismiss()
-                        
+                        showingSelectionCity = false
+                        viewModel.path = NavigationPath()
                     },
                     title: "Выбор города"
                 )
@@ -73,13 +73,16 @@ struct SelectionCityView: View {
                                 action: {
                                     viewModel.selectedCityFrom = city
                                     isPresentingStationFrom = true
+                                    viewModel.path.removeLast()
+                                    viewModel.path.append("StationFrom")
                                 },
                                 title: city.name
                             )
+                           
                             .fullScreenCover(
                                 isPresented: $isPresentingStationFrom) {
                                     SelectionStationView(
-                                        typeOfFromTo: .from,
+                                        typeOfFromTo: .from, showingSelectionStation: $isPresentingStationFrom,
                                         viewModel: viewModel
                                     )
                                 }
@@ -91,13 +94,16 @@ struct SelectionCityView: View {
                                 action: {
                                     viewModel.selectedCityTo = city
                                     isPresentingStationTo = true
+                                    viewModel.path.removeLast()
+                                    viewModel.path.append("StationTo")
                                 },
                                 title: city.name
                             )
                             .fullScreenCover(
                                 isPresented: $isPresentingStationTo) {
                                     SelectionStationView(
-                                        typeOfFromTo: .to,
+                                        typeOfFromTo: .to, 
+                                        showingSelectionStation: $isPresentingStationTo,
                                         viewModel: viewModel
                                     )
                                 }

@@ -9,9 +9,9 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-        ZStack {
-            Color.white100Black30
-            Text("SettingsView")
+            ZStack {
+                Color.white100Black30
+                Text("SettingsView")
         }
     }
 }

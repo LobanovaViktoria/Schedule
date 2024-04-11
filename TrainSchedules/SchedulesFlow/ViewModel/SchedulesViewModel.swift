@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import SwiftUI
 
 class SchedulesViewModel: ObservableObject {
     
     // MARK: - Properties
     
+    @Published var path = NavigationPath()
     @Published var stories: [Story]
     @Published var cities: [City]
     

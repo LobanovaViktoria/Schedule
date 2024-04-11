@@ -10,8 +10,10 @@ import SwiftUI
 struct StoriesView: View {
     
     // MARK: - Properties
+    
     let story: Story
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var viewModel: SchedulesViewModel
     
     // MARK: - Body
     
