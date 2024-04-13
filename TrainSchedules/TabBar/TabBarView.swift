@@ -54,7 +54,7 @@ struct TabBarView: View {
     }
     
     @ViewBuilder private func firstTabView() -> some View {
-        ScrollView {
+        VStack {
             
             switch viewModel.state {
                 
