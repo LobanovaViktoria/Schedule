@@ -11,7 +11,8 @@ struct CarrierDetailView: View {
     
     // MARK: - Properties
     
-    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var coordinator: BaseCoordinator
+    @EnvironmentObject var viewModel: SchedulesViewModel
     
     // MARK: - Body
     
@@ -47,7 +48,7 @@ struct CarrierDetailView: View {
             }
             .padding(.horizontal, 16)
             Spacer()
-                .navigationBarHidden(true)
+                .toolbar(.hidden, for: .navigationBar)
         }
     }
 }
@@ -59,7 +60,7 @@ extension CarrierDetailView {
     private var navBar: some View {
         CustomNavBar(
             actionForLeftButton: {
-                presentationMode.wrappedValue.dismiss()
+                coordinator.removeLast()
             },
             title: "Информация о перевозчике"
         )

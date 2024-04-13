@@ -41,10 +41,7 @@ struct CustomNavBar: View {
             Text(title)
                 .foregroundStyle(Color.black100White100)
                 .font(.system(size: 17, weight: .bold))
-                .frame(
-                    width: UIScreen.main.bounds.width - 72, 
-                    alignment: .center
-                )
+                .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.trailing, 36)
         }
     }

@@ -11,8 +11,8 @@ struct FiltersView: View {
     
     // MARK: - Properties
     
-    @ObservedObject var viewModel: SchedulesViewModel
-    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var coordinator: BaseCoordinator
+    @EnvironmentObject var viewModel: SchedulesViewModel
     
     private let massiveTime: [String] = [
         "Утро 06:00 - 12:00",
@@ -37,8 +37,10 @@ struct FiltersView: View {
             secondTitle
             withOrWithoutTransfersView
             applyButton
-                .navigationBarHidden(true)
+                .toolbar(.hidden, for: .navigationBar)
         }
+        .scrollIndicators(.hidden)
+        .padding(.horizontal, 16)
     }
 }
 
@@ -47,7 +49,7 @@ extension FiltersView {
     private var navBar: some View {
         CustomNavBar(
             actionForLeftButton: {
-                presentationMode.wrappedValue.dismiss()
+                coordinator.removeLast()
             },
             title: "")
     }
@@ -57,7 +59,7 @@ extension FiltersView {
             .font(.system(size: 24, weight: .bold))
             .foregroundStyle(Color.black100White100)
             .frame(
-                width: UIScreen.main.bounds.width - 32,
+                maxWidth: .infinity,
                 alignment: .leading
             )
     }
@@ -87,7 +89,7 @@ extension FiltersView {
             .font(.system(size: 24, weight: .bold))
             .foregroundStyle(Color.black100White100)
             .frame(
-                width: UIScreen.main.bounds.width - 32,
+                maxWidth: .infinity,
                 alignment: .leading
             )
     }
@@ -116,11 +118,10 @@ extension FiltersView {
     private var applyButton: some View {
         CustomButton(
             title: "Применить",
-            width: UIScreen.main.bounds.width - 32,
             isRedDot: false
         )
         .onTapGesture {
-            presentationMode.wrappedValue.dismiss()
+            coordinator.removeLast()
             
             if viewModel.selectedTimeFilter != []
                 || viewModel.selectedTransferFilter != [] {
@@ -135,9 +136,5 @@ extension FiltersView {
 // MARK: - Preview
 
 #Preview {
-    FiltersView(
-        viewModel: SchedulesViewModel(
-            stories: [], cities: []
-        )
-    )
+    FiltersView()
 }

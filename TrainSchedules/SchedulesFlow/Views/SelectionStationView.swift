@@ -14,20 +14,30 @@ struct SelectionStationView: View {
     var typeOfFromTo: TypeOfFromTo
     
     @State private var searchString = ""
-    @Binding var showingSelectionStation: Bool
    
-    @ObservedObject var viewModel: SchedulesViewModel
+    @EnvironmentObject var viewModel: SchedulesViewModel
+    @Environment(\.dismiss) private var dismiss
     
     var searchResultStation: [Station] {
-        if searchString.isEmpty {
-            return viewModel.selectedCityFrom?.stations ?? []
-        } else {
-            return viewModel.selectedCityFrom?.stations.filter {
-                $0.name.lowercased().contains(searchString.lowercased())
-            } ?? []
+        switch typeOfFromTo {
+        case .from:
+            if searchString.isEmpty {
+                return viewModel.selectedCityFrom?.stations ?? []
+            } else {
+                return viewModel.selectedCityFrom?.stations.filter {
+                    $0.name.lowercased().contains(searchString.lowercased())
+                } ?? []
+            }
+        case .to:
+            if searchString.isEmpty {
+                return viewModel.selectedCityTo?.stations ?? []
+            } else {
+                return viewModel.selectedCityTo?.stations.filter {
+                    $0.name.lowercased().contains(searchString.lowercased())
+                } ?? []
+            }
         }
     }
-    
     
     // MARK: - Body
     
@@ -44,8 +54,7 @@ struct SelectionStationView: View {
             VStack {
                 CustomNavBar(
                     actionForLeftButton: {
-                        viewModel.path.removeLast()
-                        showingSelectionStation = false
+                        dismiss()
                     },
                     title: "Выбор станции"
                 )
@@ -60,14 +69,10 @@ struct SelectionStationView: View {
                         ForEach(searchResultStation) { station in
                             SelectionCell(
                                 action: {
-                                    
                                     viewModel.selectedStationFrom = station
                                     viewModel.getTitleForListOfCarriers()
-                                    showingSelectionStation = false
-                                    for _ in 0..<viewModel.path.count {
-                                        viewModel.path.removeLast()
-                                    }
-                                },
+                                    dismiss()
+                                    },
                                 title: station.name
                             )
                             
@@ -76,14 +81,9 @@ struct SelectionStationView: View {
                         ForEach(searchResultStation) { station in
                             SelectionCell(
                                 action: {
-                                   
                                     viewModel.selectedStationTo = station
                                     viewModel.getTitleForListOfCarriers()
-                                    showingSelectionStation = false
-                                    for _ in 0..<viewModel.path.count {
-                                        viewModel.path.removeLast()
-                                    }
-                                   // presentationMode.wrappedValue.dismiss()
+                                    dismiss()
                                 },
                                 title: station.name
                             )
@@ -92,7 +92,7 @@ struct SelectionStationView: View {
                 }
                 Spacer()
             }
-            .navigationBarHidden(true)
+            .toolbar(.hidden, for: .navigationBar)
         }
     }
 }

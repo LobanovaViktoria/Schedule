@@ -11,8 +11,8 @@ struct ListOfCarriersView: View {
     
     // MARK: - Properties
     
-    @ObservedObject var viewModel: SchedulesViewModel
-    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var coordinator: BaseCoordinator
+    @EnvironmentObject var viewModel: SchedulesViewModel
     
     // MARK: - Body
     
@@ -27,15 +27,11 @@ struct ListOfCarriersView: View {
                     .padding(.bottom, 16)
                     .padding(.horizontal, 16)
                 scrollWithCarriers
-                    .navigationBarHidden(true)
-            }
-            
-            VStack {
-                Spacer()
+                    .padding(.bottom, 0)
                 buttonDetail
                     .padding(.bottom, 24)
             }
-            .navigationBarHidden(true)
+            .toolbar(.hidden, for: .navigationBar, .tabBar)
         }
     }
 }
@@ -47,7 +43,7 @@ extension ListOfCarriersView {
     private var navBar: some View {
         CustomNavBar(
             actionForLeftButton: {
-                presentationMode.wrappedValue.dismiss()
+                coordinator.removeLast()
             },
             title: "")
     }
@@ -66,24 +62,24 @@ extension ListOfCarriersView {
     private var scrollWithCarriers: some View {
         ScrollView (.vertical, showsIndicators: false) {
             ForEach(1..<10) { _ in
-                NavigationLink {
-                    CarrierDetailView()
-                } label: {
                     CarrierCell()
-                }
+                        .padding(.horizontal, 16)
+                        .onTapGesture {
+                            coordinator.carrierDetail()
+                        }
             }
         }
     }
     
     private var buttonDetail: some View {
-        NavigationLink {
-            FiltersView(viewModel: viewModel)
+        Button {
+            coordinator.filters()
         } label: {
             CustomButton(
                 title: "Уточнить время",
-                width: UIScreen.main.bounds.width - 32, 
                 isRedDot: viewModel.isApplyFilters ? true : false
             )
+            .padding(.horizontal, 16)
         }
     }
 }
@@ -91,9 +87,5 @@ extension ListOfCarriersView {
 // MARK: - Preview
 
 #Preview {
-    ListOfCarriersView(
-        viewModel: SchedulesViewModel(
-            stories: [], cities: []
-        )
-    )
+    ListOfCarriersView()
 }

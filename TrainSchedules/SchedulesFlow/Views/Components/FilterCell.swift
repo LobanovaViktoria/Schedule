@@ -43,26 +43,25 @@ struct FilterCell: View {
                     .font(.system(size: 17))
                     .foregroundStyle(Color.black100White100)
                     .frame(
-                        width: UIScreen.main.bounds.width - 60,
+                        maxWidth: .infinity,
                         alignment: .leading
                     )
                 
                 isMultipleChoice
                 ? isSelected
-                ? Image(systemName: "checkmark.square.fill")
-                    .foregroundStyle(Color.black100White100)
-                : Image(systemName: "square")
-                    .foregroundStyle(Color.black100White100)
+                    ? Image(systemName: "checkmark.square.fill")
+                        .foregroundStyle(Color.black100White100)
+                    : Image(systemName: "square")
+                        .foregroundStyle(Color.black100White100)
                 
                 : isSelected
-                ? Image(systemName: "circle.circle.fill")
-                    .foregroundStyle(Color.black100White100)
-                : Image(systemName: "circle")
-                    .foregroundStyle(Color.black100White100)
+                    ? Image(systemName: "circle.circle.fill")
+                        .foregroundStyle(Color.black100White100)
+                    : Image(systemName: "circle")
+                        .foregroundStyle(Color.black100White100)
             }
             .frame(height: 60)
         }
-        .padding(.horizontal, 16)
     }
 }
 

@@ -19,15 +19,13 @@ struct SelectionCityView: View {
     // MARK: - Properties
     
     var typeOfFromTo: TypeOfFromTo
-    
-    @Binding var showingSelectionCity: Bool
-    
+        
     @State private var searchString = ""
-    @State private var isPresentingStationFrom = false
-    @State private var isPresentingStationTo = false
     @State private var selectedCity: City? = nil
     
-    @ObservedObject var viewModel: SchedulesViewModel
+    @EnvironmentObject var coordinator: BaseCoordinator
+    @EnvironmentObject var viewModel: SchedulesViewModel
+    @Environment(\.dismiss) private var dismiss
     
     var searchResultCity: [City] {
         if searchString.isEmpty {
@@ -53,8 +51,7 @@ struct SelectionCityView: View {
             VStack {
                 CustomNavBar(
                     actionForLeftButton: {
-                        showingSelectionCity = false
-                        viewModel.path = NavigationPath()
+                        dismiss()
                     },
                     title: "Выбор города"
                 )
@@ -72,20 +69,10 @@ struct SelectionCityView: View {
                             SelectionCell(
                                 action: {
                                     viewModel.selectedCityFrom = city
-                                    isPresentingStationFrom = true
-                                    viewModel.path.removeLast()
-                                    viewModel.path.append("StationFrom")
+                                    coordinator.selectingStationFrom()
                                 },
                                 title: city.name
                             )
-                           
-                            .fullScreenCover(
-                                isPresented: $isPresentingStationFrom) {
-                                    SelectionStationView(
-                                        typeOfFromTo: .from, showingSelectionStation: $isPresentingStationFrom,
-                                        viewModel: viewModel
-                                    )
-                                }
                         }
                     case .to:
                         
@@ -93,26 +80,16 @@ struct SelectionCityView: View {
                             SelectionCell(
                                 action: {
                                     viewModel.selectedCityTo = city
-                                    isPresentingStationTo = true
-                                    viewModel.path.removeLast()
-                                    viewModel.path.append("StationTo")
+                                    coordinator.selectingStationTo()
                                 },
                                 title: city.name
                             )
-                            .fullScreenCover(
-                                isPresented: $isPresentingStationTo) {
-                                    SelectionStationView(
-                                        typeOfFromTo: .to, 
-                                        showingSelectionStation: $isPresentingStationTo,
-                                        viewModel: viewModel
-                                    )
-                                }
                         }
                     }
                 }
                 Spacer()
             }
-            .navigationBarHidden(true)
+            .toolbar(.hidden, for: .navigationBar)
         }
     }
 }

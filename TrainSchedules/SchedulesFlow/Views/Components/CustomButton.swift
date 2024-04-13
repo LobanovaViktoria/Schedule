@@ -12,18 +12,15 @@ struct CustomButton: View {
     //MARK: - Properties
     
     let title: String
-    let width: CGFloat
     let isRedDot: Bool
     
     //MARK: - Init
     
     init(
         title: String,
-        width: CGFloat,
         isRedDot: Bool
     ) {
         self.title = title
-        self.width = width
         self.isRedDot = isRedDot
     }
     
@@ -32,10 +29,7 @@ struct CustomButton: View {
     var body: some View {
         Rectangle()
             .foregroundColor(Color.blueUniversal)
-            .frame(
-                width: width,
-                height: 60
-            )
+            .frame(height: 60)
             .cornerRadius(15)
             .overlay {
                 HStack {
@@ -59,8 +53,7 @@ struct CustomButton: View {
 
 #Preview {
     CustomButton(
-        title: "Button",
-        width: 300, 
+        title: "Button", 
         isRedDot: true
     )
 }

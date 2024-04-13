@@ -27,7 +27,7 @@ struct SelectionCell: View {
     // MARK: - Body
     
     var body: some View {
-
+        
         Button {
             action()
         } label: {
@@ -37,18 +37,22 @@ struct SelectionCell: View {
                     .foregroundStyle(Color.black100White100)
                     .padding(.leading, 16)
                     .frame(
-                        width: UIScreen.main.bounds.width - 60,
+                        maxWidth: .infinity,
                         alignment: .leading
                     )
                 
-                Image(
-                    systemName: "chevron.right"
-                )
-                .foregroundStyle(Color.black100White100)
+                Image(systemName: "chevron.right")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(
+                        width: 24,
+                        height: 24
+                    )
+                    .foregroundStyle(Color.black100White100)
+                    .padding(.trailing, 18)
             }
             .frame(height: 60)
         }
-        .padding(.horizontal, 16)
     }
 }
 

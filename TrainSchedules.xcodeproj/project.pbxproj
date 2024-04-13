@@ -40,6 +40,12 @@
 		32927A252BBEAC9000A4106A /* SchedulesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32927A242BBEAC9000A4106A /* SchedulesViewModel.swift */; };
 		32927A292BBEACE500A4106A /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32927A282BBEACE500A4106A /* Story.swift */; };
 		32927A302BBECCA400A4106A /* SelectionCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32927A2F2BBECCA400A4106A /* SelectionCityView.swift */; };
+		32CC4EA72BC955A80018DF97 /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CC4EA62BC955A80018DF97 /* ViewFactory.swift */; };
+		32CC4EA92BC955D30018DF97 /* AppCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CC4EA82BC955D20018DF97 /* AppCommunicator.swift */; };
+		32CC4EAB2BC999020018DF97 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CC4EAA2BC999020018DF97 /* TabBarViewModel.swift */; };
+		32CC4EAE2BC999AB0018DF97 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CC4EAD2BC999AB0018DF97 /* ErrorView.swift */; };
+		32CC4EB52BCA7A380018DF97 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CC4EB42BCA7A370018DF97 /* SettingsViewModel.swift */; };
+		32CC4EBA2BCA7CBD0018DF97 /* CustomToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CC4EB92BCA7CBD0018DF97 /* CustomToggleStyle.swift */; };
 		32CE0A7A2BBFF6C20029DE80 /* CustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CE0A792BBFF6C20029DE80 /* CustomNavBar.swift */; };
 		32D591012B9C610C0056941B /* RoutesScheduleForStationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D591002B9C610C0056941B /* RoutesScheduleForStationService.swift */; };
 		32EDE0F92B9B592B00C3F723 /* RoutesSchedulesBetweenStationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDE0F82B9B592B00C3F723 /* RoutesSchedulesBetweenStationsService.swift */; };
@@ -79,6 +85,12 @@
 		32927A242BBEAC9000A4106A /* SchedulesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesViewModel.swift; sourceTree = "<group>"; };
 		32927A282BBEACE500A4106A /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		32927A2F2BBECCA400A4106A /* SelectionCityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionCityView.swift; sourceTree = "<group>"; };
+		32CC4EA62BC955A80018DF97 /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
+		32CC4EA82BC955D20018DF97 /* AppCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCommunicator.swift; sourceTree = "<group>"; };
+		32CC4EAA2BC999020018DF97 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
+		32CC4EAD2BC999AB0018DF97 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		32CC4EB42BCA7A370018DF97 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		32CC4EB92BCA7CBD0018DF97 /* CustomToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggleStyle.swift; sourceTree = "<group>"; };
 		32CE0A792BBFF6C20029DE80 /* CustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBar.swift; sourceTree = "<group>"; };
 		32D591002B9C610C0056941B /* RoutesScheduleForStationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesScheduleForStationService.swift; sourceTree = "<group>"; };
 		32EDE0F82B9B592B00C3F723 /* RoutesSchedulesBetweenStationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesSchedulesBetweenStationsService.swift; sourceTree = "<group>"; };
@@ -104,16 +116,8 @@
 				32066CF92BC86CBE00288FEE /* Views */,
 				32927A272BBEACC600A4106A /* Models */,
 				32927A152BBD9EFA00A4106A /* ViewModel */,
-				3273E77A2BC14E4E00EC4EDE /* SettingsFlow */,
 			);
 			path = SchedulesFlow;
-			sourceTree = "<group>";
-		};
-		32066CF82BC86CA400288FEE /* SettingsFlow */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SettingsFlow;
 			sourceTree = "<group>";
 		};
 		32066CF92BC86CBE00288FEE /* Views */ = {
@@ -135,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				3234B7E12B9AF2820060F36D /* TabBarView.swift */,
+				32CC4EAA2BC999020018DF97 /* TabBarViewModel.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -166,17 +171,17 @@
 		3234B7DE2B9AF2820060F36D /* TrainSchedules */ = {
 			isa = PBXGroup;
 			children = (
+				32CC4EAC2BC999980018DF97 /* Subviews */,
+				32CC4EA52BC9557D0018DF97 /* AppCoordinator */,
 				32066D222BC883ED00288FEE /* Splash */,
-				3234B7DF2B9AF2820060F36D /* TrainSchedulesApp.swift */,
 				32066CFA2BC86CD700288FEE /* TabBar */,
+				3273E77A2BC14E4E00EC4EDE /* SettingsFlow */,
 				32066CF72BC86C7200288FEE /* SchedulesFlow */,
-				32066CF82BC86CA400288FEE /* SettingsFlow */,
 				32EDE0F62B9B590A00C3F723 /* Services */,
 				3234B7E32B9AF2840060F36D /* Assets.xcassets */,
 				3234B7E52B9AF2840060F36D /* Preview Content */,
 				3234B7FA2B9B005C0060F36D /* openapi-generator-config.yaml */,
 				3234B7FC2B9B00850060F36D /* openapi.yaml */,
-				32066CD52BC81A5300288FEE /* AppLauncher.swift */,
 			);
 			path = TrainSchedules;
 			sourceTree = "<group>";
@@ -192,8 +197,8 @@
 		3273E77A2BC14E4E00EC4EDE /* SettingsFlow */ = {
 			isa = PBXGroup;
 			children = (
+				32CC4EB22BCA7A260018DF97 /* ViewModel */,
 				32927A142BBD9EE800A4106A /* Views */,
-				32927A192BBDA0E000A4106A /* SettingsView.swift */,
 			);
 			path = SettingsFlow;
 			sourceTree = "<group>";
@@ -201,6 +206,8 @@
 		32927A142BBD9EE800A4106A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				32CC4EB72BCA7C950018DF97 /* Components */,
+				32927A192BBDA0E000A4106A /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -234,6 +241,49 @@
 				32927A282BBEACE500A4106A /* Story.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		32CC4EA52BC9557D0018DF97 /* AppCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				3234B7DF2B9AF2820060F36D /* TrainSchedulesApp.swift */,
+				32CC4EA62BC955A80018DF97 /* ViewFactory.swift */,
+				32066CD52BC81A5300288FEE /* AppLauncher.swift */,
+				32CC4EA82BC955D20018DF97 /* AppCommunicator.swift */,
+			);
+			path = AppCoordinator;
+			sourceTree = "<group>";
+		};
+		32CC4EAC2BC999980018DF97 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				32CC4EAD2BC999AB0018DF97 /* ErrorView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		32CC4EB22BCA7A260018DF97 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				32CC4EB42BCA7A370018DF97 /* SettingsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		32CC4EB72BCA7C950018DF97 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				32CC4EB82BCA7C9C0018DF97 /* Components */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		32CC4EB82BCA7C9C0018DF97 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				32CC4EB92BCA7CBD0018DF97 /* CustomToggleStyle.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		32EDE0F62B9B590A00C3F723 /* Services */ = {
@@ -345,6 +395,7 @@
 				32927A232BBEA84A00A4106A /* GridCellView.swift in Sources */,
 				32066CD62BC81A5300288FEE /* AppLauncher.swift in Sources */,
 				32927A302BBECCA400A4106A /* SelectionCityView.swift in Sources */,
+				32CC4EBA2BCA7CBD0018DF97 /* CustomToggleStyle.swift in Sources */,
 				3234B7E22B9AF2820060F36D /* TabBarView.swift in Sources */,
 				32D591012B9C610C0056941B /* RoutesScheduleForStationService.swift in Sources */,
 				3241EC182B9DB61F0082380D /* StationsListService.swift in Sources */,
@@ -352,11 +403,14 @@
 				32927A1A2BBDA0E000A4106A /* SettingsView.swift in Sources */,
 				32F85A592BA038C8005D04BE /* AuthenticationMiddleware.swift in Sources */,
 				328DAB302B9D979500E62866 /* CustomButton.swift in Sources */,
+				32CC4EA92BC955D30018DF97 /* AppCommunicator.swift in Sources */,
 				32CE0A7A2BBFF6C20029DE80 /* CustomNavBar.swift in Sources */,
 				3234B8002B9B02700060F36D /* NearestStationsService.swift in Sources */,
 				3273E7772BC14D5500EC4EDE /* CarrierDetailView.swift in Sources */,
+				32CC4EAB2BC999020018DF97 /* TabBarViewModel.swift in Sources */,
 				326897F42BC3E60A001432DB /* InfoCellAboutCarrier.swift in Sources */,
 				32927A172BBDA0C900A4106A /* MainView.swift in Sources */,
+				32CC4EAE2BC999AB0018DF97 /* ErrorView.swift in Sources */,
 				32066CFD2BC86DEE00288FEE /* SplashScreen.swift in Sources */,
 				3234B7E02B9AF2820060F36D /* TrainSchedulesApp.swift in Sources */,
 				3273E7642BC01D3700EC4EDE /* SelectionStationView.swift in Sources */,
@@ -365,6 +419,8 @@
 				328DAB2A2B9C8DD300E62866 /* SingleThreadService.swift in Sources */,
 				32927A252BBEAC9000A4106A /* SchedulesViewModel.swift in Sources */,
 				3273E76D2BC131ED00EC4EDE /* FiltersView.swift in Sources */,
+				32CC4EA72BC955A80018DF97 /* ViewFactory.swift in Sources */,
+				32CC4EB52BCA7A380018DF97 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,8 +567,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -545,8 +600,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

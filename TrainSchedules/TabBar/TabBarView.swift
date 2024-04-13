@@ -9,48 +9,85 @@ import SwiftUI
 import OpenAPIRuntime
 import OpenAPIURLSession
 
+private let APIKEY = "e7010142-c5c6-4200-b85c-deb1ffb7dedb"
+
 struct TabBarView: View {
     
-    private let apiKey = "e7010142-c5c6-4200-b85c-deb1ffb7dedb"
+    @EnvironmentObject var coordinator: BaseCoordinator
+    @StateObject var viewModel: TabBarViewModel
+    @StateObject var schedulesViewModel = SchedulesViewModel(stories: [], cities: [])
     
     @State private var selectedTab = 0
     
-    init() {
-        UITabBar.appearance().barTintColor = UIColor.black100White100
-        UITabBar.appearance().backgroundColor = UIColor.white100Black30
+    var body: some View {
+        content()
+            .onAppear {
+                UITabBar.appearance().barTintColor = UIColor.black100White100
+                UITabBar.appearance().backgroundColor = UIColor.white100Black30
+            }
     }
     
-    var body: some View {
-        
-        VStack {
-            
+    @ViewBuilder private func content() -> some View {
+        ZStack {
             TabView(selection: $selectedTab) {
-                ZStack {
-                    VStack(spacing: 0) {
-                        MainView()
-                        dividerForTabBar
-                    }
+                VStack(spacing: 0) {
+                    firstTabView()
+                    dividerForTabBar
                 }
                 .tabItem {
                     Image(systemName: "arrow.up.message.fill")
                 }
                 .tag(0)
-                .edgesIgnoringSafeArea(.top)
                 
-                ZStack {
-                    VStack(spacing: 0) {
-                        SettingsView()
-                        dividerForTabBar
-                    }
+                VStack(spacing: 0) {
+                    secondTabView()
+                    dividerForTabBar
                 }
-                
                 .tabItem {
                     Image(systemName: "gearshape.fill")
                 }
                 .tag(1)
-                .edgesIgnoringSafeArea(.top)
             }
             .accentColor(Color.black100White100)
+            .toolbar(.hidden, for: .navigationBar)
+        }
+    }
+    
+    @ViewBuilder private func firstTabView() -> some View {
+        ScrollView {
+            
+            switch viewModel.state {
+                
+            case .loading:
+                ProgressView()
+            case .failed(let error):
+                ErrorView(error: error)
+            case .success:
+                MainView()
+            }
+        }
+        .refreshable {
+            viewModel.setTabBarState(stat: .loading)
+            viewModel.fetchData()
+        }
+    }
+    
+    @ViewBuilder private func secondTabView() -> some View {
+        VStack {
+            
+            switch viewModel.state {
+                
+            case .loading:
+                ProgressView()
+            case .failed(let error):
+                ErrorView(error: error)
+            case .success:
+                SettingsView()
+            }
+        }
+        .refreshable {
+            viewModel.setTabBarState(stat: .loading)
+            viewModel.fetchData()
         }
     }
 }
@@ -68,7 +105,7 @@ extension TabBarView {
             serverURL: try! Servers.server1(),
             transport: URLSessionTransport(),
             middlewares: [
-                AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+                AuthenticationMiddleware(authorizationHeaderFieldValue: APIKEY)
             ]
         )
         
@@ -91,7 +128,7 @@ extension TabBarView {
             serverURL: try! Servers.server1(),
             transport: URLSessionTransport(),
             middlewares: [
-                AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+                AuthenticationMiddleware(authorizationHeaderFieldValue: APIKEY)
             ]
         )
         
@@ -117,7 +154,7 @@ extension TabBarView {
         
         let service = CarriersService(
             client: client,
-            apikey: self.apiKey
+            apikey: APIKEY
         )
         
         Task {
@@ -137,7 +174,7 @@ extension TabBarView {
             serverURL: try! Servers.server1(),
             transport: URLSessionTransport(),
             middlewares: [
-                AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+                AuthenticationMiddleware(authorizationHeaderFieldValue: APIKEY)
             ]
         )
         
@@ -163,7 +200,7 @@ extension TabBarView {
             serverURL: try! Servers.server1(),
             transport: URLSessionTransport(),
             middlewares: [
-                AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+                AuthenticationMiddleware(authorizationHeaderFieldValue: APIKEY)
             ]
         )
         
@@ -188,7 +225,7 @@ extension TabBarView {
             serverURL: try! Servers.server1(),
             transport: URLSessionTransport(),
             middlewares: [
-                AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+                AuthenticationMiddleware(authorizationHeaderFieldValue: APIKEY)
             ]
         )
         
@@ -214,7 +251,7 @@ extension TabBarView {
             serverURL: try! Servers.server1(),
             transport: URLSessionTransport(),
             middlewares: [
-                AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+                AuthenticationMiddleware(authorizationHeaderFieldValue: APIKEY)
             ]
         )
         
@@ -240,7 +277,7 @@ extension TabBarView {
             serverURL: try! Servers.server1(),
             transport: URLSessionTransport(),
             middlewares: [
-                AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+                AuthenticationMiddleware(authorizationHeaderFieldValue: APIKEY)
             ]
         )
         
@@ -264,5 +301,5 @@ extension TabBarView {
 }
 
 #Preview {
-    TabBarView()
+    TabBarView(viewModel: TabBarViewModel())
 }

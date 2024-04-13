@@ -8,13 +8,14 @@
 import Foundation
 import SwiftUI
 
-class SchedulesViewModel: ObservableObject {
+final class SchedulesViewModel: ObservableObject {
     
     // MARK: - Properties
-    
-    @Published var path = NavigationPath()
+
     @Published var stories: [Story]
     @Published var cities: [City]
+    
+    @Published var selectedStory: Story?
     
     @Published var selectedCityFrom: City?
     @Published var selectedCityTo: City?
@@ -26,7 +27,6 @@ class SchedulesViewModel: ObservableObject {
     @Published var selectedTimeFilter: [String] = []
     @Published var selectedTransferFilter: [String] = []
     @Published var isApplyFilters: Bool = false
-    @Published var selectedStory: Story?
     
     // MARK: - Init
     

@@ -13,12 +13,9 @@ struct CarrierCell: View {
         
         RoundedRectangle(cornerRadius: 24)
             .fill(Color.lightGrayUniversal)
-            .frame(
-                width: UIScreen.main.bounds.width - 32,
-                height: 104
-            )
+            .frame(height: 104)
             .overlay {
-                VStack {
+                VStack(spacing: 4) {
                     HStack {
                         Image("brandIcon")
                             .resizable()
@@ -28,32 +25,38 @@ struct CarrierCell: View {
                                 height: 38
                             )
                             .padding(.trailing, 8)
-                            .padding(.leading, 30)
                         VStack {
                             Text("РЖД")
                                 .font(.system(size: 17))
                                 .foregroundStyle(Color.blackUniversal)
                                 .frame(
-                                    width: UIScreen.main.bounds.width - 185,
+                                    maxWidth: .infinity,
                                     alignment: .leading
                                 )
+                                .lineLimit(1)
+                                .padding(.trailing, 4)
                             Text("С пересадкой в Костроме")
                                 .font(.system(size: 12))
                                 .foregroundStyle(Color.redUniversal)
                                 .frame(
-                                    width: UIScreen.main.bounds.width - 185,
+                                    maxWidth: .infinity,
                                     alignment: .leading
                                 )
-                        }
-                        .padding(.trailing, 4)
+                                .lineLimit(1)
+                                .padding(.trailing, 4)
+                            }
                         
-                        Text("14 января")
+                        
+                        Text("14 сентября")
                             .font(.system(size: 12))
                             .foregroundStyle(Color.blackUniversal)
-                            .frame(width: 65, alignment: .trailing)
-                            .padding(.trailing, 30)
+                            .frame(
+                                maxWidth: 75,
+                                alignment: .trailing
+                            )
                     }
-                    .padding(.horizontal, 16)
+                    .padding(.leading, 14)
+                    .padding(.trailing, 7)
                     .padding(.bottom, 18)
                     
                     HStack {
