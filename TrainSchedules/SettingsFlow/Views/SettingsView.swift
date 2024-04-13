@@ -66,6 +66,11 @@ struct SettingsView: View {
             }
             .padding(.vertical, 24)
         }
+        .preferredColorScheme(
+            UserDefaults.standard.bool(forKey: "isDarkTheme")
+            ? .dark
+            : .light
+        )
     }
 }
 
