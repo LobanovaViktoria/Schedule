@@ -23,7 +23,20 @@ struct MainView: View {
     // MARK: - Body
     
     var body: some View {
-        
+        switch viewModel.state {
+        case .failed(let error):
+            ErrorView(error: error)
+        case .success:
+            successView
+        }
+    }
+}
+
+// MARK: - Extension MainView
+
+extension MainView {
+    
+    private var successView: some View {
         ZStack {
             
             Color.white100Black30
@@ -49,11 +62,6 @@ struct MainView: View {
         }
         .toolbar(.hidden, for: .navigationBar)
     }
-}
-
-// MARK: - Extension MainView
-
-extension MainView {
     
     private var scrollWithStories: some View {
         ScrollView(.horizontal, showsIndicators: false) {

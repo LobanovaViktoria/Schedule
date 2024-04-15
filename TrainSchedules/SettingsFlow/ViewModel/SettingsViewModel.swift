@@ -16,7 +16,8 @@ enum AppTheme: String {
 
 final class SettingsViewModel: ObservableObject {
     @Published var isDark: Bool = false
-   
+    @Published var state = AppState.success
+    
     init() {
         self.isDark = UserDefaults.standard.string(forKey: appTheme) == nil
         ? false

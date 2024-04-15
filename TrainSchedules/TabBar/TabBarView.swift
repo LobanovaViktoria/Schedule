@@ -14,8 +14,6 @@ private let APIKEY = "e7010142-c5c6-4200-b85c-deb1ffb7dedb"
 struct TabBarView: View {
     
     @EnvironmentObject var coordinator: BaseCoordinator
-    @StateObject var viewModel: TabBarViewModel
-    @StateObject var schedulesViewModel = SchedulesViewModel(stories: [], cities: [])
     
     @State private var selectedTab = 0
     
@@ -31,7 +29,7 @@ struct TabBarView: View {
         ZStack {
             TabView(selection: $selectedTab) {
                 VStack(spacing: 0) {
-                    firstTabView()
+                    MainView()
                     dividerForTabBar
                 }
                 .tabItem {
@@ -40,7 +38,7 @@ struct TabBarView: View {
                 .tag(0)
                 
                 VStack(spacing: 0) {
-                    secondTabView()
+                    SettingsView()
                     dividerForTabBar
                 }
                 .tabItem {
@@ -50,44 +48,6 @@ struct TabBarView: View {
             }
             .accentColor(Color.black100White100)
             .toolbar(.hidden, for: .navigationBar)
-        }
-    }
-    
-    @ViewBuilder private func firstTabView() -> some View {
-        VStack {
-            
-            switch viewModel.state {
-                
-            case .loading:
-                ProgressView()
-            case .failed(let error):
-                ErrorView(error: error)
-            case .success:
-                MainView()
-            }
-        }
-        .refreshable {
-            viewModel.setTabBarState(stat: .loading)
-            viewModel.fetchData()
-        }
-    }
-    
-    @ViewBuilder private func secondTabView() -> some View {
-        VStack {
-            
-            switch viewModel.state {
-                
-            case .loading:
-                ProgressView()
-            case .failed(let error):
-                ErrorView(error: error)
-            case .success:
-                SettingsView()
-            }
-        }
-        .refreshable {
-            viewModel.setTabBarState(stat: .loading)
-            viewModel.fetchData()
         }
     }
 }
@@ -301,5 +261,5 @@ extension TabBarView {
 }
 
 #Preview {
-    TabBarView(viewModel: TabBarViewModel())
+    TabBarView()
 }

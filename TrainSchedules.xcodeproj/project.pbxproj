@@ -42,10 +42,10 @@
 		32927A302BBECCA400A4106A /* SelectionCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32927A2F2BBECCA400A4106A /* SelectionCityView.swift */; };
 		32CC4EA72BC955A80018DF97 /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CC4EA62BC955A80018DF97 /* ViewFactory.swift */; };
 		32CC4EA92BC955D30018DF97 /* AppCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CC4EA82BC955D20018DF97 /* AppCommunicator.swift */; };
-		32CC4EAB2BC999020018DF97 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CC4EAA2BC999020018DF97 /* TabBarViewModel.swift */; };
 		32CC4EAE2BC999AB0018DF97 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CC4EAD2BC999AB0018DF97 /* ErrorView.swift */; };
 		32CC4EB52BCA7A380018DF97 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CC4EB42BCA7A370018DF97 /* SettingsViewModel.swift */; };
 		32CC4EBA2BCA7CBD0018DF97 /* CustomToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CC4EB92BCA7CBD0018DF97 /* CustomToggleStyle.swift */; };
+		32CC4EC12BCD12F20018DF97 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CC4EC02BCD12F20018DF97 /* AppState.swift */; };
 		32CE0A7A2BBFF6C20029DE80 /* CustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CE0A792BBFF6C20029DE80 /* CustomNavBar.swift */; };
 		32D591012B9C610C0056941B /* RoutesScheduleForStationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D591002B9C610C0056941B /* RoutesScheduleForStationService.swift */; };
 		32EDE0F92B9B592B00C3F723 /* RoutesSchedulesBetweenStationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EDE0F82B9B592B00C3F723 /* RoutesSchedulesBetweenStationsService.swift */; };
@@ -87,10 +87,10 @@
 		32927A2F2BBECCA400A4106A /* SelectionCityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionCityView.swift; sourceTree = "<group>"; };
 		32CC4EA62BC955A80018DF97 /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
 		32CC4EA82BC955D20018DF97 /* AppCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCommunicator.swift; sourceTree = "<group>"; };
-		32CC4EAA2BC999020018DF97 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		32CC4EAD2BC999AB0018DF97 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		32CC4EB42BCA7A370018DF97 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		32CC4EB92BCA7CBD0018DF97 /* CustomToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggleStyle.swift; sourceTree = "<group>"; };
+		32CC4EC02BCD12F20018DF97 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		32CE0A792BBFF6C20029DE80 /* CustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBar.swift; sourceTree = "<group>"; };
 		32D591002B9C610C0056941B /* RoutesScheduleForStationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesScheduleForStationService.swift; sourceTree = "<group>"; };
 		32EDE0F82B9B592B00C3F723 /* RoutesSchedulesBetweenStationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesSchedulesBetweenStationsService.swift; sourceTree = "<group>"; };
@@ -139,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				3234B7E12B9AF2820060F36D /* TabBarView.swift */,
-				32CC4EAA2BC999020018DF97 /* TabBarViewModel.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -248,8 +247,9 @@
 			children = (
 				3234B7DF2B9AF2820060F36D /* TrainSchedulesApp.swift */,
 				32CC4EA62BC955A80018DF97 /* ViewFactory.swift */,
-				32066CD52BC81A5300288FEE /* AppLauncher.swift */,
 				32CC4EA82BC955D20018DF97 /* AppCommunicator.swift */,
+				32066CD52BC81A5300288FEE /* AppLauncher.swift */,
+				32CC4EC02BCD12F20018DF97 /* AppState.swift */,
 			);
 			path = AppCoordinator;
 			sourceTree = "<group>";
@@ -407,12 +407,12 @@
 				32CE0A7A2BBFF6C20029DE80 /* CustomNavBar.swift in Sources */,
 				3234B8002B9B02700060F36D /* NearestStationsService.swift in Sources */,
 				3273E7772BC14D5500EC4EDE /* CarrierDetailView.swift in Sources */,
-				32CC4EAB2BC999020018DF97 /* TabBarViewModel.swift in Sources */,
 				326897F42BC3E60A001432DB /* InfoCellAboutCarrier.swift in Sources */,
 				32927A172BBDA0C900A4106A /* MainView.swift in Sources */,
 				32CC4EAE2BC999AB0018DF97 /* ErrorView.swift in Sources */,
 				32066CFD2BC86DEE00288FEE /* SplashScreen.swift in Sources */,
 				3234B7E02B9AF2820060F36D /* TrainSchedulesApp.swift in Sources */,
+				32CC4EC12BCD12F20018DF97 /* AppState.swift in Sources */,
 				3273E7642BC01D3700EC4EDE /* SelectionStationView.swift in Sources */,
 				322439E42BBFFBFB003E411A /* SearchBar.swift in Sources */,
 				3273E7962BC15C3A00EC4EDE /* StoriesView.swift in Sources */,

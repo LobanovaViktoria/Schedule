@@ -17,7 +17,20 @@ struct ListOfCarriersView: View {
     // MARK: - Body
     
     var body: some View {
-        
+        switch viewModel.state {
+        case .failed(let error):
+            ErrorView(error: error)
+        case .success:
+            successView
+        }
+    }
+}
+
+// MARK: - Extension
+
+extension ListOfCarriersView {
+    
+    private var successView: some View {
         ZStack {
             VStack {
                 navBar
@@ -34,11 +47,6 @@ struct ListOfCarriersView: View {
             .toolbar(.hidden, for: .navigationBar, .tabBar)
         }
     }
-}
-
-// MARK: - Extension
-
-extension ListOfCarriersView {
     
     private var navBar: some View {
         CustomNavBar(

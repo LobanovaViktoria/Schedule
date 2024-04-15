@@ -29,6 +29,18 @@ struct FiltersView: View {
     // MARK: - Body
     
     var body: some View {
+        switch viewModel.state {
+        case .failed(let error):
+            ErrorView(error: error)
+        case .success:
+            successView
+        }
+    }
+}
+
+extension FiltersView {
+    
+    private var successView: some View {
         ScrollView {
             navBar
                 .padding(.bottom, 16)
@@ -42,9 +54,6 @@ struct FiltersView: View {
         .scrollIndicators(.hidden)
         .padding(.horizontal, 16)
     }
-}
-
-extension FiltersView {
     
     private var navBar: some View {
         CustomNavBar(

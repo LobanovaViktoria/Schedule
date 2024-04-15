@@ -18,6 +18,20 @@ struct StoriesView: View {
     // MARK: - Body
     
     var body: some View {
+        switch viewModel.state {
+        case .failed(let error):
+            ErrorView(error: error)
+        case .success:
+            successView
+        }
+    }
+}
+
+// MARK: Extension StoriesView
+
+extension StoriesView {
+    
+    private var successView: some View {
         ZStack{
             
             background
@@ -47,11 +61,6 @@ struct StoriesView: View {
         .background(Color.blackUniversal)
         .ignoresSafeArea()
     }
-}
-
-// MARK: Extension StoriesView
-
-extension StoriesView {
     
     private var background: some View {
         

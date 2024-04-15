@@ -42,7 +42,20 @@ struct SelectionStationView: View {
     // MARK: - Body
     
     var body: some View {
-        
+        switch viewModel.state {
+        case .failed(let error):
+            ErrorView(error: error)
+        case .success:
+            successView
+        }
+    }
+}
+
+// MARK: - Extension SelectionStationView
+
+extension SelectionStationView {
+    
+    private var successView: some View {
         ZStack {
             
             if searchResultStation == [] {

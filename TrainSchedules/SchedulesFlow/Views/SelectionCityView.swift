@@ -19,7 +19,7 @@ struct SelectionCityView: View {
     // MARK: - Properties
     
     var typeOfFromTo: TypeOfFromTo
-        
+    
     @State private var searchString = ""
     @State private var selectedCity: City? = nil
     
@@ -36,11 +36,24 @@ struct SelectionCityView: View {
             }
         }
     }
-   
+    
     // MARK: - Body
     
     var body: some View {
-        
+        switch viewModel.state {
+        case .failed(let error):
+            ErrorView(error: error)
+        case .success:
+            successView
+        }
+    }
+}
+
+    // MARK: - Extension SelectionCityView
+    
+extension SelectionCityView {
+    
+    private var successView: some View {
         ZStack {
             if searchResultCity == [] {
                 Text("Город не найден")
