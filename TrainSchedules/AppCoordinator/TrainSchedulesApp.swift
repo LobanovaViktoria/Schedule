@@ -30,9 +30,11 @@ struct TrainSchedulesApp: App {
                 : launcher.load()
             }
             .preferredColorScheme(
-                UserDefaults.standard.bool(forKey: "isDarkTheme")
-                ? .dark
-                : .light
+                UserDefaults.standard.string(forKey: appTheme) == nil
+                ? .none
+                : UserDefaults.standard.string(forKey: appTheme) == AppTheme.dark.rawValue
+                    ? .dark
+                    : .light
             )
         }
         .onChange(of: scenePhase) { newPhase in

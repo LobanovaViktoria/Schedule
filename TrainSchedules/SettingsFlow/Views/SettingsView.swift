@@ -29,7 +29,9 @@ struct SettingsView: View {
                     Spacer()
                     Toggle("", isOn: $viewModel.isDark)
                         .onChange(of: viewModel.isDark) {newValue in
-                            viewModel.upDateUserDefaults(newValue: newValue)
+                            newValue == true
+                            ? viewModel.upDateUserDefaults(newValue: AppTheme.dark.rawValue)
+                            : viewModel.upDateUserDefaults(newValue: AppTheme.light.rawValue)
                         }
                         .toggleStyle(
                             CustomToggleStyle(
@@ -67,9 +69,11 @@ struct SettingsView: View {
             .padding(.vertical, 24)
         }
         .preferredColorScheme(
-            UserDefaults.standard.bool(forKey: "isDarkTheme")
-            ? .dark
-            : .light
+            UserDefaults.standard.string(forKey: appTheme) == nil
+            ? .none
+            : UserDefaults.standard.string(forKey: appTheme) == AppTheme.dark.rawValue
+                ? .dark
+                : .light
         )
     }
 }
