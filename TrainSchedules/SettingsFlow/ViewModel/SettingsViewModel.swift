@@ -15,19 +15,21 @@ enum AppTheme: String {
 }
 
 final class SettingsViewModel: ObservableObject {
+    
+    @AppStorage("isDarkTheme") private var appTheme: String?
     @Published var isDark: Bool = false
     @Published var state = AppState.success
     
     init() {
-        self.isDark = UserDefaults.standard.string(forKey: appTheme) == nil
+        self.isDark = appTheme == nil
         ? false
-        : UserDefaults.standard.string(forKey: appTheme) == AppTheme.dark.rawValue
+        : appTheme == AppTheme.dark.rawValue
             ? true
             : false
     }
     
     func upDateUserDefaults(newValue: String){
-        UserDefaults.standard.set(newValue, forKey: appTheme)
+        appTheme = newValue
     }
 }
 

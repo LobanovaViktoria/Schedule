@@ -11,7 +11,8 @@ import SwiftUI
 struct TrainSchedulesApp: App {
     
     @AppStorage("shouldShowSplash") var shouldShowSplash: Bool = true
-   
+    @AppStorage("isDarkTheme") private var appTheme: String?
+    
     @State private var launcher = AppLauncher()
     @Environment(\.scenePhase)var scenePhase
     @ObservedObject var coordinator = BaseCoordinator()
@@ -30,9 +31,9 @@ struct TrainSchedulesApp: App {
                 : launcher.load()
             }
             .preferredColorScheme(
-                UserDefaults.standard.string(forKey: appTheme) == nil
+                appTheme == nil
                 ? .none
-                : UserDefaults.standard.string(forKey: appTheme) == AppTheme.dark.rawValue
+                : appTheme == AppTheme.dark.rawValue
                     ? .dark
                     : .light
             )
