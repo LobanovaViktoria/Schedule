@@ -12,7 +12,9 @@ private let PRIVACY = "https://yandex.ru/legal/practicum_offer/"
 struct SettingsView: View {
     
     // MARK: Properties
+    
     @Environment(\.openURL) var openURL
+    @EnvironmentObject var coordinator: BaseCoordinator
     @StateObject var viewModel = SettingsViewModel()
     
     // MARK: Body
@@ -60,9 +62,10 @@ extension SettingsView {
                     
                     SelectionCell(
                         action: {
-                            if let url = URL(string: PRIVACY)  {
-                                openURL(url)
-                            }
+                            coordinator.userAgreement()
+//                            if let url = URL(string: PRIVACY)  {
+//                                openURL(url)
+//                            }
                         },
                         title: "Пользовательское соглашение"
                     )

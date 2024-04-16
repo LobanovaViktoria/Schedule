@@ -30,6 +30,7 @@ protocol SchedulesNavigator {
     func listOfCarriers()
     func filters()
     func carrierDetail()
+    func userAgreement()
 }
 
 extension BaseCoordinator: SchedulesNavigator {
@@ -61,6 +62,10 @@ extension BaseCoordinator: SchedulesNavigator {
     func carrierDetail() {
         path.append(DestinationFlowPage.carrierDetail)
     }
+    
+    func userAgreement() {
+        path.append(DestinationFlowPage.userAgreement)
+    }
 }
 
 enum DestinationFlowPage: Hashable, Identifiable {
@@ -76,6 +81,7 @@ enum DestinationFlowPage: Hashable, Identifiable {
     case listOfCarriers
     case filters
     case carrierDetail
+    case userAgreement
     
     var id: String {
         String(describing: self)
@@ -99,6 +105,8 @@ enum DestinationFlowPage: Hashable, Identifiable {
             hasher.combine("filters")
         case .carrierDetail:
             hasher.combine("carrierDetail")
+        case .userAgreement:
+            hasher.combine("userAgreement")
         }
     }
 }

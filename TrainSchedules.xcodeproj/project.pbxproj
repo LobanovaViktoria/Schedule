@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		320145DB2BCE95B4009B63EE /* UserAgreementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320145DA2BCE95B4009B63EE /* UserAgreementView.swift */; };
+		320145E22BCE9662009B63EE /* UserAgreementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320145E12BCE9662009B63EE /* UserAgreementViewModel.swift */; };
 		32066CD62BC81A5300288FEE /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32066CD52BC81A5300288FEE /* AppLauncher.swift */; };
 		32066CFD2BC86DEE00288FEE /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32066CFC2BC86DEE00288FEE /* SplashScreen.swift */; };
 		321009782B9B0B63001152FF /* OpenAPIRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 321009772B9B0B63001152FF /* OpenAPIRuntime */; };
@@ -53,6 +55,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		320145DA2BCE95B4009B63EE /* UserAgreementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreementView.swift; sourceTree = "<group>"; };
+		320145E12BCE9662009B63EE /* UserAgreementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreementViewModel.swift; sourceTree = "<group>"; };
 		32066CD52BC81A5300288FEE /* AppLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLauncher.swift; sourceTree = "<group>"; };
 		32066CFC2BC86DEE00288FEE /* SplashScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SplashScreen.swift; path = TrainSchedules/Splash/SplashScreen.swift; sourceTree = SOURCE_ROOT; };
 		322439E32BBFFBFB003E411A /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -110,6 +114,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		320145DD2BCE9604009B63EE /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				32927A142BBD9EE800A4106A /* Views */,
+				32CC4EB22BCA7A260018DF97 /* ViewModel */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		320145DE2BCE961C009B63EE /* UserAgreement */ = {
+			isa = PBXGroup;
+			children = (
+				320145E02BCE9646009B63EE /* ViewModel */,
+				320145DF2BCE962C009B63EE /* View */,
+			);
+			path = UserAgreement;
+			sourceTree = "<group>";
+		};
+		320145DF2BCE962C009B63EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				320145DA2BCE95B4009B63EE /* UserAgreementView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		320145E02BCE9646009B63EE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				320145E12BCE9662009B63EE /* UserAgreementViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		32066CF72BC86C7200288FEE /* SchedulesFlow */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,8 +234,8 @@
 		3273E77A2BC14E4E00EC4EDE /* SettingsFlow */ = {
 			isa = PBXGroup;
 			children = (
-				32CC4EB22BCA7A260018DF97 /* ViewModel */,
-				32927A142BBD9EE800A4106A /* Views */,
+				320145DE2BCE961C009B63EE /* UserAgreement */,
+				320145DD2BCE9604009B63EE /* Settings */,
 			);
 			path = SettingsFlow;
 			sourceTree = "<group>";
@@ -384,6 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				320145E22BCE9662009B63EE /* UserAgreementViewModel.swift in Sources */,
 				328DAB2D2B9D95AA00E62866 /* NearestSettlementService.swift in Sources */,
 				3241EC1B2B9DC62B0082380D /* CopyrightService.swift in Sources */,
 				322439E72BBFFE14003E411A /* SelectionCell.swift in Sources */,
@@ -392,6 +431,7 @@
 				3273E7742BC132B500EC4EDE /* FilterCell.swift in Sources */,
 				32927A292BBEACE500A4106A /* Story.swift in Sources */,
 				32EDE0F92B9B592B00C3F723 /* RoutesSchedulesBetweenStationsService.swift in Sources */,
+				320145DB2BCE95B4009B63EE /* UserAgreementView.swift in Sources */,
 				32927A232BBEA84A00A4106A /* GridCellView.swift in Sources */,
 				32066CD62BC81A5300288FEE /* AppLauncher.swift in Sources */,
 				32927A302BBECCA400A4106A /* SelectionCityView.swift in Sources */,
