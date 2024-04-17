@@ -9,69 +9,63 @@ import SwiftUI
 import OpenAPIRuntime
 import OpenAPIURLSession
 
-struct ContentView: View {
+private let APIKEY = "e7010142-c5c6-4200-b85c-deb1ffb7dedb"
+
+struct TabBarView: View {
     
-    private let apiKey = "e7010142-c5c6-4200-b85c-deb1ffb7dedb"
+    @EnvironmentObject var coordinator: BaseCoordinator
+    
+    @State private var selectedTab = 0
     
     var body: some View {
-        
-        ScrollView {
-            
-            Text("API Яндекс Расписаний")
-                .font(.title)
-                .padding(.vertical, 30)
-            
-            CustomButton(
-                title: "Расписание рейсов между станциями") {
-                    routes()
+        content()
+            .onAppear {
+                UITabBar.appearance().barTintColor = UIColor.black100White100
+                UITabBar.appearance().backgroundColor = UIColor.white100Black30
+            }
+    }
+    
+    @ViewBuilder private func content() -> some View {
+        ZStack {
+            TabView(selection: $selectedTab) {
+                VStack(spacing: 0) {
+                    MainView()
+                    dividerForTabBar
                 }
-            
-            CustomButton(
-                title: "Расписание рейсов по станции") {
-                    getScheduleForStation()
+                .tabItem {
+                    Image(systemName: "arrow.up.message.fill")
                 }
-            
-            CustomButton(
-                title: "Список станций следования") {
-                    getThread()
+                .tag(0)
+                
+                VStack(spacing: 0) {
+                    SettingsView()
+                    dividerForTabBar
                 }
-            
-            CustomButton(
-                title: "Список ближайших станций") {
-                    stations()
+                .tabItem {
+                    Image(systemName: "gearshape.fill")
                 }
-            
-            CustomButton(
-                title: "Ближайший город") {
-                    getNearestSettlement()
-                }
-            
-            CustomButton(
-                title: "Информация о перевозчике") {
-                    getCarriers()
-                }
-            
-            CustomButton(
-                title: "Список всех доступных станций") {
-                    getStationList()
-                }
-            
-            CustomButton(
-                title: "Копирайт Яндекс Расписаний") {
-                    getCopyright()
-                }
+                .tag(1)
+            }
+            .accentColor(Color.black100White100)
+            .toolbar(.hidden, for: .navigationBar)
         }
     }
 }
 
-extension ContentView {
+extension TabBarView {
+    
+    private var dividerForTabBar: some View {
+        Divider()
+            .background(Color.black30Black100)
+            .frame(height: 1)
+    }
     
     private func getCopyright() {
         let client = Client(
             serverURL: try! Servers.server1(),
             transport: URLSessionTransport(),
             middlewares: [
-            AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+                AuthenticationMiddleware(authorizationHeaderFieldValue: APIKEY)
             ]
         )
         
@@ -94,7 +88,7 @@ extension ContentView {
             serverURL: try! Servers.server1(),
             transport: URLSessionTransport(),
             middlewares: [
-            AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+                AuthenticationMiddleware(authorizationHeaderFieldValue: APIKEY)
             ]
         )
         
@@ -120,7 +114,7 @@ extension ContentView {
         
         let service = CarriersService(
             client: client,
-            apikey: self.apiKey
+            apikey: APIKEY
         )
         
         Task {
@@ -140,7 +134,7 @@ extension ContentView {
             serverURL: try! Servers.server1(),
             transport: URLSessionTransport(),
             middlewares: [
-            AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+                AuthenticationMiddleware(authorizationHeaderFieldValue: APIKEY)
             ]
         )
         
@@ -166,7 +160,7 @@ extension ContentView {
             serverURL: try! Servers.server1(),
             transport: URLSessionTransport(),
             middlewares: [
-            AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+                AuthenticationMiddleware(authorizationHeaderFieldValue: APIKEY)
             ]
         )
         
@@ -191,7 +185,7 @@ extension ContentView {
             serverURL: try! Servers.server1(),
             transport: URLSessionTransport(),
             middlewares: [
-            AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+                AuthenticationMiddleware(authorizationHeaderFieldValue: APIKEY)
             ]
         )
         
@@ -217,7 +211,7 @@ extension ContentView {
             serverURL: try! Servers.server1(),
             transport: URLSessionTransport(),
             middlewares: [
-            AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+                AuthenticationMiddleware(authorizationHeaderFieldValue: APIKEY)
             ]
         )
         
@@ -229,7 +223,7 @@ extension ContentView {
                 let routes = try await service.getRoutesSchedulesBetweenStations(
                     from: "s2014001",
                     to: "s9600816",
-                    date: "2024-03-03",
+                    date: "2024-04-03",
                     limit: 20)
                 print(routes)
             } catch {
@@ -243,7 +237,7 @@ extension ContentView {
             serverURL: try! Servers.server1(),
             transport: URLSessionTransport(),
             middlewares: [
-            AuthenticationMiddleware(authorizationHeaderFieldValue: apiKey)
+                AuthenticationMiddleware(authorizationHeaderFieldValue: APIKEY)
             ]
         )
         
@@ -267,5 +261,5 @@ extension ContentView {
 }
 
 #Preview {
-    ContentView()
+    TabBarView()
 }
