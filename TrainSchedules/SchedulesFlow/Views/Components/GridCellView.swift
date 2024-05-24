@@ -22,7 +22,7 @@ struct GridCellView: View {
     
     var body: some View {
         ZStack {
-            Image(story.images.first ?? "")
+            Image(story.image)
                 .resizable()
                 .frame(
                     width: isNew ? width - 4 : width,
@@ -65,7 +65,7 @@ struct GridCellView: View {
         Color.whiteUniversal
         GridCellView(
             story: Story(
-                images: ["2", "21", "22"],
+                image: "2",
                 title: "Test Test Test Test Test ", 
                 subTitle: "Test Test Test Test Test Test Test Test"
             ),

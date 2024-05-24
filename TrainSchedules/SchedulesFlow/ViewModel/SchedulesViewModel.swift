@@ -14,10 +14,10 @@ final class SchedulesViewModel: ObservableObject {
 
     @Published var state = AppState.success
     
-    @Published var stories: [Story]
+    @Published var stories: [Stories]
     @Published var cities: [City]
     
-    @Published var selectedStory: Story?
+    @Published var selectedStory: Stories?
     
     @Published var selectedCityFrom: City?
     @Published var selectedCityTo: City?
@@ -33,7 +33,7 @@ final class SchedulesViewModel: ObservableObject {
     // MARK: - Init
     
     init(
-        stories: [Story],
+        stories: [Stories],
         cities: [City]
     ) {
         self.stories = stories
@@ -70,26 +70,41 @@ final class SchedulesViewModel: ObservableObject {
     
     private func getStories() {
         let story1 = Story(
-            images: ["1"],
-            title: "Test Test",
+            image: "1",
+            title: "Test1 Test1",
             subTitle: "Test Test Test Test Test Test Test Test"
         )
         let story2 = Story(
-            images: ["2", "21", "22"],
-            title: "Test Test Test Test",
+            image: "2",
+            title: "Test2 Test2 Test2 Test2",
+            subTitle: "Test Test Test Test Test Test Test Test"
+        )
+        let story21 = Story(
+            image: "21",
+            title: "Test21 Test21 Test21 Test21",
+            subTitle: "Test Test Test Test Test Test Test Test"
+        )
+        let story22 = Story(
+            image: "22",
+            title: "Test22 Test22 Test22 Test22",
             subTitle: "Test Test Test Test Test Test Test Test"
         )
         let story3 = Story(
-            images: ["3"],
-            title: "Test Test Test Test Test Test",
+            image: "3",
+            title: "Test3 Test3 Test3 Test3 Test Test",
             subTitle: "Test Test Test Test Test Test Test Test"
         )
         let story4 = Story(
-            images: ["4"],
-            title: "Test Test Test Test Test Test Test Test",
+            image: "4",
+            title: "Test4 Test4 Test4 Test4 Test Test Test Test",
             subTitle: "Test Test Test Test Test Test Test Test")
         
-        self.stories = [story1, story2, story3, story4]
+        self.stories = [
+            Stories(items: [story1]),
+            Stories(items: [story2, story21, story22]),
+            Stories(items: [story3]),
+            Stories(items: [story4])
+        ]
     }
     
     private func getCities() {

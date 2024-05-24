@@ -30,6 +30,8 @@ class ViewFactory: ObservableObject {
             self.carrierDetail()
         case .userAgreement:
             self.userAgreement()
+        case .stories:
+            self.showStories()
         }
     }
     
@@ -66,6 +68,10 @@ class ViewFactory: ObservableObject {
     
     static func userAgreement() -> some View {
        UserAgreementView()
+    }
+    
+    static func showStories() -> some View {
+        StoriesView()
     }
 }
 
