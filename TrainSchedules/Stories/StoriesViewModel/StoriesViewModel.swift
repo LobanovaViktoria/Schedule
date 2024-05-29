@@ -22,6 +22,8 @@ final class StoriesViewModel: ObservableObject {
         getStories()
     }
     
+    // MARK: - Methods
+    
     private func getStories() {
         let story1 = Story(
             image: "1",

@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct CloseButton: View {
+    
+    // MARK: - Properties
+    
     let action: () -> Void
 
+    // MARK: - Body
+    
     var body: some View {
         Button(action: {
             action()
@@ -18,6 +23,8 @@ struct CloseButton: View {
         })
     }
 }
+
+// MARK: - Preview
 
 #Preview {
     CloseButton(action: {})

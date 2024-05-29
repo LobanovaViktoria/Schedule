@@ -9,46 +9,44 @@ import SwiftUI
 import Combine
 
 struct TabStoriesView: View {
-    struct Configuration {
-        let timerTickInternal: TimeInterval
-        let progressPerTick: CGFloat
-        
-        init(
-            storiesCount: Int,
-            secondsPerStory: TimeInterval = 5,
-            timerTickInternal: TimeInterval = 0.25
-        ) {
-            self.timerTickInternal = timerTickInternal
-            self.progressPerTick = 1.0 / CGFloat(storiesCount) / secondsPerStory * timerTickInternal
-        }
+    
+    // MARK: - Properties
+    
+    let storiesForOneUser: [Story]
+    
+    private let configuration: TimerConfiguration
+    private var currentStory: Story {
+        storiesForOneUser[currentStoryIndex]
     }
-    
-    let stories: [Story]
-    
-    private let configuration: Configuration
-    private var currentStory: Story { stories[currentStoryIndex] }
-    private var currentStoryIndex: Int { Int(progress * CGFloat(stories.count)) }
+    private var currentStoryIndex: Int {
+        Int(progress * CGFloat(storiesForOneUser.count))
+    }
     @State private var progress: CGFloat = 0
     @State private var timer: Timer.TimerPublisher
     @State private var cancellable: Cancellable?
+    
     let actionForFinishStories: () -> ()
     let actionForCloseButton: () -> ()
     
-    init(stories: [Story],
+    // MARK: - Init
+    
+    init(storiesForOneUser: [Story],
          actionForFinishStories: @escaping () -> (),
          actionForCloseButton: @escaping () -> ()
     ) {
-        self.stories = stories
-        configuration = Configuration(storiesCount: stories.count)
+        self.storiesForOneUser = storiesForOneUser
+        configuration = TimerConfiguration(storiesCount: storiesForOneUser.count)
         timer = Self.createTimer(configuration: configuration)
         self.actionForFinishStories = actionForFinishStories
         self.actionForCloseButton = actionForCloseButton
     }
     
+    // MARK: - Body
+    
     var body: some View {
         ZStack(alignment: .topTrailing) {
             StoryView(story: currentStory)
-            ProgressBar(numberOfSections: stories.count, progress: progress)
+            ProgressBar(numberOfSections: storiesForOneUser.count, progress: progress)
                 .padding(.init(top: 28, leading: 12, bottom: 12, trailing: 12))
             CloseButton(action: {
                 actionForCloseButton()
@@ -68,13 +66,17 @@ struct TabStoriesView: View {
             timerTick()
         }
         .onTapGesture {
-            if stories.count > 1 && currentStoryIndex < stories.count - 1 {
+            if storiesForOneUser.count > 1 && currentStoryIndex < storiesForOneUser.count - 1 {
                 nextStory()
                 resetTimer()
             }
         }
     }
-    private func timerTick() {
+}
+
+extension TabStoriesView {
+    
+   private func timerTick() {
         var nextProgress = progress + configuration.progressPerTick
         if nextProgress >= 1 {
             nextProgress = 0
@@ -86,7 +88,7 @@ struct TabStoriesView: View {
     }
     
     private func nextStory() {
-        let storiesCount = stories.count
+        let storiesCount = storiesForOneUser.count
         let currentStoryIndex = Int(progress * CGFloat(storiesCount))
         let nextStoryIndex = currentStoryIndex + 1 < storiesCount ? currentStoryIndex + 1 : 0
         withAnimation {
@@ -101,7 +103,7 @@ struct TabStoriesView: View {
     }
     
     private static func createTimer(
-        configuration: Configuration
+        configuration: TimerConfiguration
     ) -> Timer.TimerPublisher {
         Timer.publish(
             every: configuration.timerTickInternal,
@@ -110,3 +112,24 @@ struct TabStoriesView: View {
         )
     }
 }
+
+// MARK: - Preview
+
+#Preview {
+    TabStoriesView(
+        storiesForOneUser: [
+            Story(
+                image: "4",
+                title: "Test4 Test4 Test4 Test4 Test Test Test Test",
+                subTitle: "Test Test Test Test Test Test Test Test"
+            ),
+            Story(
+                image: "3",
+                title: "Test3 Test3 Test3 Test3 Test Test",
+                subTitle: "Test Test Test Test Test Test Test Test"
+            )
+        ],
+        actionForFinishStories: {},
+        actionForCloseButton: {})
+}
+

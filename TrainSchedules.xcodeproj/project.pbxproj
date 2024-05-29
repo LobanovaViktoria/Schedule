@@ -50,6 +50,7 @@
 		32927A302BBECCA400A4106A /* SelectionCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32927A2F2BBECCA400A4106A /* SelectionCityView.swift */; };
 		32A100402C05E59F009A10D8 /* CGFloat+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A1003F2C05E59F009A10D8 /* CGFloat+Ext.swift */; };
 		32A100422C05F7FD009A10D8 /* StoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A100412C05F7FD009A10D8 /* StoriesViewModel.swift */; };
+		32A100502C0716FA009A10D8 /* TimerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A1004F2C0716FA009A10D8 /* TimerConfiguration.swift */; };
 		32CC4EA72BC955A80018DF97 /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CC4EA62BC955A80018DF97 /* ViewFactory.swift */; };
 		32CC4EA92BC955D30018DF97 /* AppCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CC4EA82BC955D20018DF97 /* AppCommunicator.swift */; };
 		32CC4EAE2BC999AB0018DF97 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CC4EAD2BC999AB0018DF97 /* ErrorView.swift */; };
@@ -105,6 +106,7 @@
 		32927A2F2BBECCA400A4106A /* SelectionCityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionCityView.swift; sourceTree = "<group>"; };
 		32A1003F2C05E59F009A10D8 /* CGFloat+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Ext.swift"; sourceTree = "<group>"; };
 		32A100412C05F7FD009A10D8 /* StoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesViewModel.swift; sourceTree = "<group>"; };
+		32A1004F2C0716FA009A10D8 /* TimerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerConfiguration.swift; sourceTree = "<group>"; };
 		32CC4EA62BC955A80018DF97 /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
 		32CC4EA82BC955D20018DF97 /* AppCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCommunicator.swift; sourceTree = "<group>"; };
 		32CC4EAD2BC999AB0018DF97 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
@@ -251,9 +253,10 @@
 		324AAA5A2BFF1B5B00B46A2B /* Stories */ = {
 			isa = PBXGroup;
 			children = (
+				32A1004E2C0716D6009A10D8 /* TimerConfiguration */,
+				32A1004D2C0716B4009A10D8 /* StoriesViewModel */,
 				32927A272BBEACC600A4106A /* Models */,
 				324AAA612BFF201B00B46A2B /* Views */,
-				32A100412C05F7FD009A10D8 /* StoriesViewModel.swift */,
 			);
 			path = Stories;
 			sourceTree = "<group>";
@@ -342,6 +345,22 @@
 				32A1003F2C05E59F009A10D8 /* CGFloat+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		32A1004D2C0716B4009A10D8 /* StoriesViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				32A100412C05F7FD009A10D8 /* StoriesViewModel.swift */,
+			);
+			path = StoriesViewModel;
+			sourceTree = "<group>";
+		};
+		32A1004E2C0716D6009A10D8 /* TimerConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				32A1004F2C0716FA009A10D8 /* TimerConfiguration.swift */,
+			);
+			path = TimerConfiguration;
 			sourceTree = "<group>";
 		};
 		32CC4EA52BC9557D0018DF97 /* AppCoordinator */ = {
@@ -530,6 +549,7 @@
 				328DAB2A2B9C8DD300E62866 /* SingleThreadService.swift in Sources */,
 				32927A252BBEAC9000A4106A /* SchedulesViewModel.swift in Sources */,
 				32A100422C05F7FD009A10D8 /* StoriesViewModel.swift in Sources */,
+				32A100502C0716FA009A10D8 /* TimerConfiguration.swift in Sources */,
 				3273E76D2BC131ED00EC4EDE /* FiltersView.swift in Sources */,
 				32CC4EA72BC955A80018DF97 /* ViewFactory.swift in Sources */,
 				32CC4EB52BCA7A380018DF97 /* SettingsViewModel.swift in Sources */,

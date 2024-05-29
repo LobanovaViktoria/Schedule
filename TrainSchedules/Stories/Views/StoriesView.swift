@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct StoriesView: View {
-   
+    
+    // MARK: - Properties
+    
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var storiesViewModel: StoriesViewModel
- 
+    @EnvironmentObject var storiesVM: StoriesViewModel
+    
+    // MARK: - Body
+    
     var body: some View {
-        switch storiesViewModel.state {
+        switch storiesVM.state {
         case .failed(let error):
             ErrorView(error: error)
         case .success:
@@ -29,29 +33,35 @@ extension StoriesView {
         Color.blackUniversal
             .ignoresSafeArea()
             .overlay {
-                TabView(selection: $storiesViewModel.selectedStoriesIndex) {
-                    ForEach(0..<storiesViewModel.stories.count, id: \.self) { index in
-                        TabStoriesView(stories: storiesViewModel.stories[storiesViewModel.selectedStoriesIndex].items, actionForFinishStories: {
-                            if index == storiesViewModel.stories.count - 1 {
-                                storiesViewModel.stories[index].isItShown = true
-                                storiesViewModel.selectedStoriesIndex = index
+                TabView(
+                    selection: $storiesVM.selectedStoriesIndex
+                ) {
+                    ForEach(0..<storiesVM.stories.count, id: \.self) { index in
+                        TabStoriesView(
+                            storiesForOneUser: storiesVM.stories[storiesVM.selectedStoriesIndex].items,
+                            actionForFinishStories: {
+                                if index == storiesVM.stories.count - 1 {
+                                    storiesVM.stories[index].isItShown = true
+                                    storiesVM.selectedStoriesIndex = index
+                                    closeView()
+                                } else {
+                                    storiesVM.selectedStoriesIndex = index + 1
+                                    storiesVM.stories[index].isItShown = true
+                                }
+                            }, actionForCloseButton: {
+                                storiesVM.stories[index].isItShown = true
                                 closeView()
-                            } else {
-                                storiesViewModel.selectedStoriesIndex = index + 1
-                                storiesViewModel.stories[index].isItShown = true
-                            }
-                           
-                        }, actionForCloseButton: {
-                            storiesViewModel.stories[index].isItShown = true
-                            closeView()
-                        })
+                            })
                     }
                 }
                 .ignoresSafeArea()
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-    
+                .tabViewStyle(
+                    PageTabViewStyle(
+                        indexDisplayMode: .never
+                    )
+                )
             }
-        }
+    }
     
     private func closeView() {
         presentationMode.wrappedValue.dismiss()
@@ -61,21 +71,18 @@ extension StoriesView {
         HStack {
             Spacer()
             Button(action: {
-              presentationMode.wrappedValue.dismiss()
+                closeView()
             }, label: {
                 Image("closeButton")
                     .resizable()
-                    .frame(width: 30, height: 30)
+                    .frame(
+                        width: 30,
+                        height: 30
+                    )
             }
             )
             .padding(.top, 50)
             .padding(.trailing, 12)
         }
     }
-}
-
-// MARK: Preview
-
-#Preview {
-    StoriesView()
 }

@@ -14,17 +14,23 @@ struct ProgressBar: View {
     let numberOfSections: Int
     let progress: CGFloat
 
+    // MARK: - Body
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .leading) {
-                RoundedRectangle(cornerRadius: .progressBarCornerRadius)
+                RoundedRectangle(
+                    cornerRadius: .progressBarCornerRadius
+                )
                     .frame(
                         width: geometry.size.width,
                         height: .progressBarHeight
                     )
                     .foregroundColor(Color.whiteUniversal)
 
-                RoundedRectangle(cornerRadius: .progressBarCornerRadius)
+                RoundedRectangle(
+                    cornerRadius: .progressBarCornerRadius
+                )
                     .frame(
                         width: min(
                             progress * geometry.size.width,
@@ -41,6 +47,8 @@ struct ProgressBar: View {
     }
 }
 
+// MARK: - Private structs
+
 private struct MaskView: View {
     let numberOfSections: Int
 
@@ -55,17 +63,24 @@ private struct MaskView: View {
 
 private struct MaskFragmentView: View {
     var body: some View {
-        RoundedRectangle(cornerRadius: .progressBarCornerRadius)
+        RoundedRectangle(
+            cornerRadius: .progressBarCornerRadius
+        )
             .frame(height: .progressBarHeight)
             .foregroundStyle(.white)
     }
 }
 
+// MARK: - Preview
+
 #Preview {
     Color.grayUniversal
         .ignoresSafeArea()
         .overlay(
-            ProgressBar(numberOfSections: 5, progress: 0.5)
+            ProgressBar(
+                numberOfSections: 5,
+                progress: 0.5
+            )
                 .padding()
         )
 }
