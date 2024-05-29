@@ -5,7 +5,6 @@
 //  Created by Viktoria Lobanova on 04.04.2024.
 //
 
-import Foundation
 import SwiftUI
 
 final class SchedulesViewModel: ObservableObject {
@@ -14,10 +13,7 @@ final class SchedulesViewModel: ObservableObject {
 
     @Published var state = AppState.success
     
-    @Published var stories: [Stories]
     @Published var cities: [City]
-    
-    @Published var selectedStory: Stories?
     
     @Published var selectedCityFrom: City?
     @Published var selectedCityTo: City?
@@ -33,12 +29,9 @@ final class SchedulesViewModel: ObservableObject {
     // MARK: - Init
     
     init(
-        stories: [Stories],
         cities: [City]
     ) {
-        self.stories = stories
         self.cities = cities
-        getStories()
         getCities()
     }
     
@@ -66,45 +59,6 @@ final class SchedulesViewModel: ObservableObject {
             selectedStationFrom = selectedStationTo
             selectedStationTo = newStationTo
         }
-    }
-    
-    private func getStories() {
-        let story1 = Story(
-            image: "1",
-            title: "Test1 Test1",
-            subTitle: "Test Test Test Test Test Test Test Test"
-        )
-        let story2 = Story(
-            image: "2",
-            title: "Test2 Test2 Test2 Test2",
-            subTitle: "Test Test Test Test Test Test Test Test"
-        )
-        let story21 = Story(
-            image: "21",
-            title: "Test21 Test21 Test21 Test21",
-            subTitle: "Test Test Test Test Test Test Test Test"
-        )
-        let story22 = Story(
-            image: "22",
-            title: "Test22 Test22 Test22 Test22",
-            subTitle: "Test Test Test Test Test Test Test Test"
-        )
-        let story3 = Story(
-            image: "3",
-            title: "Test3 Test3 Test3 Test3 Test Test",
-            subTitle: "Test Test Test Test Test Test Test Test"
-        )
-        let story4 = Story(
-            image: "4",
-            title: "Test4 Test4 Test4 Test4 Test Test Test Test",
-            subTitle: "Test Test Test Test Test Test Test Test")
-        
-        self.stories = [
-            Stories(items: [story1]),
-            Stories(items: [story2, story21, story22]),
-            Stories(items: [story3]),
-            Stories(items: [story4])
-        ]
     }
     
     private func getCities() {

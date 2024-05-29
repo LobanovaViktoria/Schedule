@@ -3,6 +3,7 @@ import Foundation
 struct Stories: Hashable, Identifiable {
     var id = UUID()
     var items: [Story]
+    var isItShown: Bool
 }
 
 struct Story: Hashable, Identifiable {

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class ViewFactory: ObservableObject {
-   
+    
     @ViewBuilder static func viewForDestination(_ destination: DestinationFlowPage) -> some View {
         switch destination {
         case .tabBar:
@@ -67,7 +67,7 @@ class ViewFactory: ObservableObject {
     }
     
     static func userAgreement() -> some View {
-       UserAgreementView()
+        UserAgreementView()
     }
     
     static func showStories() -> some View {

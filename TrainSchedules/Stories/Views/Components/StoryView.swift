@@ -1,5 +1,5 @@
 //
-//  StoriesView.swift
+//  StoryView.swift
 //  TrainSchedules
 //
 //  Created by Viktoria Lobanova on 06.04.2024.
@@ -47,7 +47,6 @@ struct StoryView: View {
         }
         .background(Color.blackUniversal)
         .ignoresSafeArea()
-
         }
     }
 
@@ -75,5 +74,4 @@ extension StoryView {
             subTitle: "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test"
         )
     )
-    .environmentObject(SchedulesViewModel(stories: [], cities: []))
 }

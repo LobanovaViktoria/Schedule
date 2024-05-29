@@ -7,12 +7,10 @@
 
 import SwiftUI
 
-extension CGFloat {
-    static let progressBarCornerRadius: CGFloat = 3
-    static let progressBarHeight: CGFloat = 6
-}
-
 struct ProgressBar: View {
+    
+    // MARK: - Properties
+    
     let numberOfSections: Int
     let progress: CGFloat
 

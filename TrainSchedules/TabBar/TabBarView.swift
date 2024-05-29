@@ -12,9 +12,7 @@ import OpenAPIURLSession
 private let APIKEY = "e7010142-c5c6-4200-b85c-deb1ffb7dedb"
 
 struct TabBarView: View {
-    
-    @EnvironmentObject var coordinator: BaseCoordinator
-    
+   
     @State private var selectedTab = 0
     
     var body: some View {

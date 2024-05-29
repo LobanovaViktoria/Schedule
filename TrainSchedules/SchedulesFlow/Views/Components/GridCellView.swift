@@ -16,7 +16,7 @@ struct GridCellView: View {
     private let widthText: Double = 76
     private let heightText: Double = 45
     let story: Story
-    let isNew: Bool
+    let isItShown: Bool
     
     // MARK: - Body
     
@@ -25,10 +25,10 @@ struct GridCellView: View {
             Image(story.image)
                 .resizable()
                 .frame(
-                    width: isNew ? width - 4 : width,
+                    width: isItShown ? width : width - 4 ,
                     height: height
                 )
-                .opacity(isNew ? 1 : 0.5)
+                .opacity(isItShown ? 0.5 : 1)
                 .clipShape(
                     RoundedRectangle(cornerRadius: 16)
                 )
@@ -36,7 +36,7 @@ struct GridCellView: View {
                     RoundedRectangle(cornerRadius: 16)
                         .stroke(
                             Color.blueUniversal,
-                            lineWidth: isNew ? 4 : 0
+                            lineWidth: isItShown ? 0 : 4
                         )
                 )
             VStack {
@@ -69,7 +69,7 @@ struct GridCellView: View {
                 title: "Test Test Test Test Test ", 
                 subTitle: "Test Test Test Test Test Test Test Test"
             ),
-            isNew: false
+            isItShown: false
         )
     }
 }

@@ -10,36 +10,14 @@ import SwiftUI
 struct StoriesView: View {
    
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var viewModel: SchedulesViewModel
-    private var timerConfiguration: TimerConfiguration {
-        .init(storiesCount: viewModel.stories.count)
-    }
-    @State var currentStoryIndex: Int = 0
-    @State var currentProgress: CGFloat = 0
-
+    @EnvironmentObject var storiesViewModel: StoriesViewModel
+ 
     var body: some View {
-        switch viewModel.state {
+        switch storiesViewModel.state {
         case .failed(let error):
             ErrorView(error: error)
         case .success:
             successView
-        }
-    }
-
-    private func didChangeCurrentIndex(oldIndex: Int, newIndex: Int) {
-        guard oldIndex != newIndex else { return }
-        let progress = timerConfiguration.progress(for: newIndex)
-        guard abs(progress - currentProgress) >= 0.01 else { return }
-        withAnimation {
-            currentProgress = progress
-        }
-    }
-
-    private func didChangeCurrentProgress(newProgress: CGFloat) {
-        let index = timerConfiguration.index(for: newProgress)
-        guard index != currentStoryIndex else { return }
-        withAnimation {
-            currentStoryIndex = index
         }
     }
 }
@@ -48,38 +26,35 @@ struct StoriesView: View {
 
 extension StoriesView {
     private var successView: some View {
-        ZStack(alignment: .topTrailing) {
-            if let selectedStory = viewModel.selectedStory {
-                if #available(iOS 17.0, *) {
-                    StoriesTabView(
-                        stories: selectedStory,
-                        currentStoryIndex: $currentStoryIndex
-                    )
-                    .onChange(of: currentStoryIndex) { oldValue, newValue in
-                        didChangeCurrentIndex(oldIndex: oldValue, newIndex: newValue)
+        Color.blackUniversal
+            .ignoresSafeArea()
+            .overlay {
+                TabView(selection: $storiesViewModel.selectedStoriesIndex) {
+                    ForEach(0..<storiesViewModel.stories.count, id: \.self) { index in
+                        TabStoriesView(stories: storiesViewModel.stories[storiesViewModel.selectedStoriesIndex].items, actionForFinishStories: {
+                            if index == storiesViewModel.stories.count - 1 {
+                                storiesViewModel.stories[index].isItShown = true
+                                storiesViewModel.selectedStoriesIndex = index
+                                closeView()
+                            } else {
+                                storiesViewModel.selectedStoriesIndex = index + 1
+                                storiesViewModel.stories[index].isItShown = true
+                            }
+                           
+                        }, actionForCloseButton: {
+                            storiesViewModel.stories[index].isItShown = true
+                            closeView()
+                        })
                     }
-                } else {
-                    // Fallback on earlier versions
                 }
-                
-                if #available(iOS 17.0, *) {
-                    StoriesProgressBar(
-                        storiesCount: selectedStory.items.count,
-                        timerConfiguration: timerConfiguration,
-                        currentProgress: $currentProgress
-                    )
-                    .padding(.init(top: 28, leading: 12, bottom: 12, trailing: 12))
-                    .onChange(of: currentProgress) { _, newValue in
-                        didChangeCurrentProgress(newProgress: newValue)
-                    }
-                } else {
-                    // Fallback on earlier versions
-                }
-                closeButton
+                .ignoresSafeArea()
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+    
             }
-                
-            
         }
+    
+    private func closeView() {
+        presentationMode.wrappedValue.dismiss()
     }
     
     private var closeButton: some View {
@@ -103,5 +78,4 @@ extension StoriesView {
 
 #Preview {
     StoriesView()
-    .environmentObject(SchedulesViewModel(stories: [], cities: []))
 }
