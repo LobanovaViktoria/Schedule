@@ -55,9 +55,13 @@ struct StoryView: View {
 extension StoryView {
  
     private var background: some View {
-        
-        Image(story.image)
-            .resizable()
+        Color.clear
+            .overlay {
+                Image(story.image)
+                    .resizable()
+                    .scaledToFill()
+                   
+            }
             .clipShape(RoundedRectangle(cornerRadius: 40))
             .padding(.top, 50)
             .padding(.bottom, 17)

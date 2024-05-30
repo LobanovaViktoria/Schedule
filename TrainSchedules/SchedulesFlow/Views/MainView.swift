@@ -66,8 +66,8 @@ extension MainView {
     private var scrollWithStories: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHGrid(rows: rows, alignment: .center, spacing: 12) {
-                ForEach(storiesViewModel.stories.indices, id: \.self ) { index in
-                    GridCellView(story: storiesViewModel.stories[index].items[0], isItShown: storiesViewModel.stories[index].isItShown)
+                ForEach(StoriesViewModel.stories.indices, id: \.self ) { index in
+                    GridCellView(story: StoriesViewModel.stories[index].items[0], isItShown: StoriesViewModel.stories[index].isItShown)
                         .onTapGesture {
                             storiesViewModel.selectedStoriesIndex = index
                             coordinator.stories()

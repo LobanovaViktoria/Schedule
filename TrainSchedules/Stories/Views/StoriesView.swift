@@ -36,20 +36,20 @@ extension StoriesView {
                 TabView(
                     selection: $storiesVM.selectedStoriesIndex
                 ) {
-                    ForEach(0..<storiesVM.stories.count, id: \.self) { index in
+                    ForEach(0..<StoriesViewModel.stories.count, id: \.self) { index in
                         TabStoriesView(
-                            storiesForOneUser: storiesVM.stories[storiesVM.selectedStoriesIndex].items,
+                            storiesForOneUser: StoriesViewModel.stories[storiesVM.selectedStoriesIndex].items,
                             actionForFinishStories: {
-                                if index == storiesVM.stories.count - 1 {
-                                    storiesVM.stories[index].isItShown = true
+                                if index == StoriesViewModel.stories.count - 1 {
+                                    StoriesViewModel.stories[index].isItShown = true
                                     storiesVM.selectedStoriesIndex = index
                                     closeView()
                                 } else {
                                     storiesVM.selectedStoriesIndex = index + 1
-                                    storiesVM.stories[index].isItShown = true
+                                    StoriesViewModel.stories[index].isItShown = true
                                 }
                             }, actionForCloseButton: {
-                                storiesVM.stories[index].isItShown = true
+                                StoriesViewModel.stories[index].isItShown = true
                                 closeView()
                             })
                     }

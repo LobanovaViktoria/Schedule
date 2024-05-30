@@ -13,7 +13,7 @@ final class StoriesViewModel: ObservableObject {
     // MARK: - Properties
     
     @Published var state = AppState.success
-    @Published var stories: [Stories] = []
+    static var stories: [Stories] = []
     @Published var selectedStoriesIndex: Int = 0
     
     // MARK: - Init
@@ -56,7 +56,7 @@ final class StoriesViewModel: ObservableObject {
             subTitle: "Test Test Test Test Test Test Test Test"
         )
         
-        self.stories = [
+        StoriesViewModel.stories = [
             Stories(items: [story1], isItShown: false),
             Stories(items: [story2, story21, story22], isItShown: false),
             Stories(items: [story3], isItShown: false),

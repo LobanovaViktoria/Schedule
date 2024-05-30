@@ -24,6 +24,7 @@ struct GridCellView: View {
         ZStack {
             Image(story.image)
                 .resizable()
+                .scaledToFill()
                 .frame(
                     width: isItShown ? width : width - 4 ,
                     height: height
