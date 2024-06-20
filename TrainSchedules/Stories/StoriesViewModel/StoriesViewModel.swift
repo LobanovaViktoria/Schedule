@@ -13,8 +13,8 @@ final class StoriesViewModel: ObservableObject {
     // MARK: - Properties
     
     @Published var state = AppState.success
-    static var stories: [Stories] = []
     @Published var selectedStoriesIndex: Int = 0
+    static var stories: [Stories] = []
     
     // MARK: - Init
     
