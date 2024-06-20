@@ -12,12 +12,11 @@ struct MainView: View {
     // MARK: - Properties
     @EnvironmentObject var coordinator: BaseCoordinator
     @EnvironmentObject var viewModel: SchedulesViewModel
+    @EnvironmentObject var storiesViewModel: StoriesViewModel
     
     @State var from: String = "Откуда"
     @State var to: String = "Куда"
-    
-    @State private var selectedStory: Story?
-    
+   
     private let rows = [GridItem()]
     
     // MARK: - Body
@@ -61,15 +60,17 @@ extension MainView {
             .scrollIndicators(.hidden)
         }
         .toolbar(.hidden, for: .navigationBar)
+        .environmentObject(storiesViewModel)
     }
     
     private var scrollWithStories: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHGrid(rows: rows, alignment: .center, spacing: 12) {
-                ForEach(viewModel.stories) { story in
-                    GridCellView(story: story, isNew: true)
+                ForEach(StoriesViewModel.stories.indices, id: \.self ) { index in
+                    GridCellView(story: StoriesViewModel.stories[index].items[0], isItShown: StoriesViewModel.stories[index].isItShown)
                         .onTapGesture {
-                            viewModel.selectedStory = story
+                            storiesViewModel.selectedStoriesIndex = index
+                            coordinator.stories()
                         }
                 }
             }
@@ -83,7 +84,6 @@ extension MainView {
         ZStack {
             blueRectangle
                 .padding(.horizontal, 16)
-            
             HStack {
                 whiteRectangle
                     .padding(.leading, 32)
@@ -191,4 +191,5 @@ extension MainView {
 
 #Preview {
     MainView()
+        .environmentObject(SchedulesViewModel(cities: []))
 }

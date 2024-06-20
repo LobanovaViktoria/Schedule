@@ -31,10 +31,14 @@ protocol SchedulesNavigator {
     func filters()
     func carrierDetail()
     func userAgreement()
+    func stories()
 }
 
 extension BaseCoordinator: SchedulesNavigator {
-    
+    func stories() {
+        fullCoverItem = .stories
+    }
+
     func selectingCityFrom() {
         fullCoverItem = .selectingCityFrom
     }
@@ -82,6 +86,7 @@ enum DestinationFlowPage: Hashable, Identifiable {
     case filters
     case carrierDetail
     case userAgreement
+    case stories
     
     var id: String {
         String(describing: self)
@@ -107,6 +112,8 @@ enum DestinationFlowPage: Hashable, Identifiable {
             hasher.combine("carrierDetail")
         case .userAgreement:
             hasher.combine("userAgreement")
+        case .stories:
+            hasher.combine("stories")
         }
     }
 }

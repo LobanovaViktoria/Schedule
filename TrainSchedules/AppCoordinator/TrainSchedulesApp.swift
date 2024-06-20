@@ -16,7 +16,8 @@ struct TrainSchedulesApp: App {
     @State private var launcher = AppLauncher()
     @Environment(\.scenePhase)var scenePhase
     @ObservedObject var coordinator = BaseCoordinator()
-    @StateObject var schedulesViewModel: SchedulesViewModel = SchedulesViewModel(stories: [], cities: [])
+    @StateObject var schedulesViewModel: SchedulesViewModel = SchedulesViewModel(cities: [])
+    @StateObject var storiesViewModel = StoriesViewModel()
     
     var body: some Scene {
         WindowGroup {
@@ -76,6 +77,7 @@ struct TrainSchedulesApp: App {
             }
             .environmentObject(coordinator)
             .environmentObject(schedulesViewModel)
+            .environmentObject(storiesViewModel)
         }
     }
     

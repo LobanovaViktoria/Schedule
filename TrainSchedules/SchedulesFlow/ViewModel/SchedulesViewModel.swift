@@ -5,7 +5,6 @@
 //  Created by Viktoria Lobanova on 04.04.2024.
 //
 
-import Foundation
 import SwiftUI
 
 final class SchedulesViewModel: ObservableObject {
@@ -14,10 +13,7 @@ final class SchedulesViewModel: ObservableObject {
 
     @Published var state = AppState.success
     
-    @Published var stories: [Story]
     @Published var cities: [City]
-    
-    @Published var selectedStory: Story?
     
     @Published var selectedCityFrom: City?
     @Published var selectedCityTo: City?
@@ -33,12 +29,9 @@ final class SchedulesViewModel: ObservableObject {
     // MARK: - Init
     
     init(
-        stories: [Story],
         cities: [City]
     ) {
-        self.stories = stories
         self.cities = cities
-        getStories()
         getCities()
     }
     
@@ -66,30 +59,6 @@ final class SchedulesViewModel: ObservableObject {
             selectedStationFrom = selectedStationTo
             selectedStationTo = newStationTo
         }
-    }
-    
-    private func getStories() {
-        let story1 = Story(
-            images: ["1"],
-            title: "Test Test",
-            subTitle: "Test Test Test Test Test Test Test Test"
-        )
-        let story2 = Story(
-            images: ["2", "21", "22"],
-            title: "Test Test Test Test",
-            subTitle: "Test Test Test Test Test Test Test Test"
-        )
-        let story3 = Story(
-            images: ["3"],
-            title: "Test Test Test Test Test Test",
-            subTitle: "Test Test Test Test Test Test Test Test"
-        )
-        let story4 = Story(
-            images: ["4"],
-            title: "Test Test Test Test Test Test Test Test",
-            subTitle: "Test Test Test Test Test Test Test Test")
-        
-        self.stories = [story1, story2, story3, story4]
     }
     
     private func getCities() {
